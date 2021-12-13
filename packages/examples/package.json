@@ -1,0 +1,30 @@
+{
+  "name": "example",
+  "author": "zhuxun.jb",
+  "private": true,
+  "engines": {
+    "npm": ">=10.0.0"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "scripts": {},
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "rax-create-portal": "^1.0.0",
+    "@eva/rax-eva": "^0.1.1",
+    "@eva/rax-eva-sprite": "^0.1.1",
+    "@eva/rax-eva-sprite-animation": "^0.1.1",
+    "@eva/rax-eva-image": "^0.1.1",
+    "@eva/rax-eva-graphics": "^0.1.1",
+    "@eva/rax-eva-dragonbone": "^0.1.1",
+    "@eva/rax-eva-transition": "^0.1.1",
+    "@eva/rax-eva-a11y": "^0.1.1",
+    "@eva/rax-eva-spine": "^0.1.1",
+    "@eva/rax-eva-mask": "^0.1.1"
+  },
+  "devDependencies": {},
+  "version": "0.1.1"
+}

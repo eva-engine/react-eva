@@ -1,0 +1,44 @@
+{
+  "version": "0.1.1",
+  "name": "playground",
+  "author": "zhuxun.jb",
+  "private": true,
+  "engines": {
+    "npm": ">=10.0.0"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "scripts": {
+    "webpack": "webpack --config webpack.config.js && webpack --config webpack.libs.config.js",
+    "predev": "npm run webpack",
+    "dev": "demosify --public-url \"/\" --serve",
+    "prepublic": "rm -rf ./public && npm run webpack",
+    "public": "demosify --public-url \"./\" --prod",
+    "postpublic": "node ./script/aplus.js"
+  },
+  "dependencies": {
+    "@eva/rax-eva": "^0.1.1",
+    "@eva/rax-eva-a11y": "^0.1.1",
+    "@eva/rax-eva-dragonbone": "^0.1.1",
+    "@eva/rax-eva-graphics": "^0.1.1",
+    "@eva/rax-eva-image": "^0.1.1",
+    "@eva/rax-eva-mask": "^0.1.1",
+    "@eva/rax-eva-spine": "^0.1.1",
+    "@eva/rax-eva-sprite": "^0.1.1",
+    "@eva/rax-eva-sprite-animation": "^0.1.1",
+    "@eva/rax-eva-tiling-sprite": "^0.1.1",
+    "@eva/rax-eva-transition": "^0.1.1",
+    "@eva/rax-eva-lottie": "^0.1.1",
+    "@babel/standalone": "^7.12.9",
+    "pixi.js": "^4.8.9",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "webpack": "^4",
+    "webpack-cli": "^4.2.0",
+    "cheerio": "^1.0.0-rc.3"
+  }
+}

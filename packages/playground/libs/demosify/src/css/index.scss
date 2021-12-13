@@ -1,0 +1,21 @@
+@import '~normalize.css';
+@import '~nprogress/nprogress.css';
+@import '@/css/default_theme.scss';
+@import '~themeFile';
+
+
+* {
+  color: $c-font;
+}
+
+// ::-webkit-scrollbar {
+//   background-color: $c-bg;
+// }
+// ::-webkit-scrollbar-thumb {
+//   background-color: rgba(white, 0.3);
+//   border-radius: 5px;
+// }
+
+// #nprogress .spinner {
+//   display: none;
+// }

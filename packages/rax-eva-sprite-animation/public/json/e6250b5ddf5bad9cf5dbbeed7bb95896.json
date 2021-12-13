@@ -1,0 +1,4 @@
+
+
+
+{"frames":{"symbol_1":{"frame":{"x":0,"y":0,"w":84,"h":85},"rotated":false,"trimmed":true,"spriteSourceSize":{"x":0,"y":0,"w":84,"h":85},"sourceSize":{"w":84,"h":85}},"symbol_2":{"frame":{"x":84,"y":0,"w":84,"h":85},"rotated":false,"trimmed":true,"spriteSourceSize":{"x":0,"y":0,"w":84,"h":85},"sourceSize":{"w":84,"h":85}}},"animations":{"symbol":["symbol_1","symbol_2"]},"meta":{"app":"https://www.codeandweb.com/texturepacker","version":"1.0","image":"symbol.png","format":"RGBA4444","size":{"w":168,"h":85},"scale":"1","smartupdate":""}}

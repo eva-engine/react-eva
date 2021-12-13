@@ -1,0 +1,214 @@
+:root {
+  --deg: 60deg;
+  --xOffset: 100px;
+  --duration: 0.4s;
+}
+
+#root {
+  transition: all var(--duration) 0s linear;
+}
+
+.eva {
+  margin-bottom: -230px;
+  transition: all var(--duration) 0s linear;
+}
+
+.nav {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  transition: all var(--duration) 0s linear;
+}
+
+.backbtn {
+  width: 32px;
+  height: 32px;
+  box-sizing: border-box;
+  padding: 8px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.25);
+  color: #fff;
+}
+
+.goldinfo {
+  position: relative;
+  margin-left: 6px;
+  width: 80px;
+  height: 30px;
+  font-size: 10px;
+  color: #fff;
+  display: flex;
+}
+
+.goldinfo .icon {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-image: url(//gw.alicdn.com/tfs/TB1lrD3fLb2gK0jSZK9XXaEgFXa-60-60.png);
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: 30px 30px;
+}
+
+.goldinfo span {
+  width: 100%;
+  height: 24px;
+  line-height: 24px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.25);
+  margin: 3px 0;
+  padding-left: 40%;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.bg {
+  transition: all var(--duration) 0s linear;
+}
+
+.bg div {
+  width: 100%;
+  height: 100%;
+  background: url('//gw.alicdn.com/tfs/TB10db4gkP2gK0jSZPxXXacQpXa-750-1000.png')
+    top center no-repeat;
+  background-size: contain;
+}
+
+canvas {
+  transition: all var(--duration) 0s linear;
+}
+
+.hud {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  transition: all var(--duration) 0s linear;
+}
+
+.btn {
+  position: absolute;
+  right: 20px;
+  top: 300px;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+.btn img {
+  width: 57px;
+  height: 66px;
+}
+
+.toast {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+.toast span {
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 6px;
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+}
+
+.banner-list {
+  transition: all var(--duration) 0s linear;
+}
+
+.banner {
+  z-index: 9;
+  transform: translateZ(9px);
+  display: flex;
+  justify-content: center;
+}
+
+#root.show3d {
+  transform-style: preserve-3d;
+  perspective: 1000vw;
+  transform: scale(0.9);
+}
+
+#root.show3d .eva {
+  transform-style: preserve-3d;
+}
+
+#root.show3d .eva .bg {
+  transform: translate3d(calc(var(--xOffset) * -1), 0, 0px)
+    rotate3d(0, 1, 0, var(--deg)) !important;
+  background-color: rgba(255, 0, 0, 0.5);
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 0, 0, 0.5);
+}
+
+#root.show3d .eva .bg:before {
+  content: 'eva bg';
+  font-size: 30px;
+  color: #fff;
+  -webkit-text-stroke: #999 1px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  text-align: center;
+}
+
+#root.show3d .eva canvas {
+  transform: translate3d(0px, 0px, 0) rotate3d(0, 1, 0, var(--deg)) !important;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 255, 0.5);
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 255, 0.5);
+}
+
+#root.show3d .eva .hud {
+  transform: translate3d(var(--xOffset), 0px, 0) rotate3d(0, 1, 0, var(--deg)) !important;
+  background-color: rgba(0, 255, 0, 0.5);
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 255, 0, 0.5);
+}
+
+#root.show3d .eva .hud:before {
+  content: 'eva hud';
+  font-size: 30px;
+  color: #fff;
+  -webkit-text-stroke: #999 1px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  text-align: center;
+}
+
+#root.show3d .nav {
+  transform: translate3d(calc(var(--xOffset) * 2), 0px, 0)
+    rotate3d(0, 1, 0, var(--deg)) !important;
+}
+
+#root.show3d .banner-list {
+  transform: translate3d(calc(var(--xOffset) * 2), 0px, 0)
+    rotate3d(0, 1, 0, var(--deg)) !important;
+  background-color: rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}

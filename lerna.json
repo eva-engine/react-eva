@@ -1,0 +1,9 @@
+{
+  "npmClient": "npm",
+  "registry": "https://registry.npmjs.org/",
+  "version": "independent",
+  "packages": [
+    "packages/*"
+  ],
+  "loglevel": "info"
+}

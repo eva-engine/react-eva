@@ -1,0 +1,182 @@
+[
+  {
+    "group": "快速开始",
+    "src": "quickstart",
+    "demos": [
+      {
+        "label": "guide1",
+        "src": "guide1"
+      },
+      {
+        "label": "guide2",
+        "src": "guide2"
+      },
+      {
+        "label": "guide3",
+        "src": "guide3"
+      },
+      {
+        "label": "guide4",
+        "src": "guide4"
+      },
+      {
+        "label": "guide5",
+        "src": "guide5"
+      },
+      {
+        "label": "guide6",
+        "src": "guide6"
+      },
+      {
+        "label": "guide7",
+        "src": "guide7"
+      },
+      {
+        "label": "guide8",
+        "src": "guide8"
+      },
+      {
+        "label": "guide9",
+        "src": "guide9"
+      },
+      {
+        "label": "guide10",
+        "src": "guide10"
+      }
+    ]
+  },
+  {
+    "group": "Hooks",
+    "src": "hooks",
+    "demos": [
+      {
+        "label": "useEva",
+        "src": "useEva"
+      },
+      {
+        "label": "usePreload",
+        "src": "usePreload"
+      },
+      {
+        "label": "useResource",
+        "src": "useResource"
+      },
+      {
+        "label": "useComponent",
+        "src": "useComponent"
+      },
+      {
+        "label": "useComponents",
+        "src": "useComponents"
+      },
+      {
+        "label": "useImage",
+        "src": "useImage"
+      },
+      {
+        "label": "useSprite",
+        "src": "useSprite"
+      },
+      {
+        "label": "useSpriteAnimation",
+        "src": "useSpriteAnimation"
+      },
+      {
+        "label": "useGraphics",
+        "src": "useGraphics"
+      },
+      {
+        "label": "useSpine",
+        "src": "useSpine"
+      },
+      {
+        "label": "useTilingSprite",
+        "src": "useTilingSprite"
+      },
+      {
+        "label": "useDragonBone",
+        "src": "useDragonBone"
+      },
+      {
+        "label": "useLottie",
+        "src": "useLottie"
+      },
+      {
+        "label": "useTransition",
+        "src": "useTransition"
+      },
+      {
+        "label": "useMask",
+        "src": "useMask"
+      }
+    ]
+  },
+  {
+    "group": "组件",
+    "src": "component",
+    "demos": [
+      {
+        "label": "Eva",
+        "src": "Eva"
+      },
+      {
+        "label": "Image",
+        "src": "Image"
+      },
+      {
+        "label": "Sprite",
+        "src": "Sprite"
+      },
+      {
+        "label": "SpriteAnimation",
+        "src": "SpriteAnimation"
+      },
+      {
+        "label": "Graphics",
+        "src": "Graphics"
+      },
+      {
+        "label": "Spine",
+        "src": "Spine"
+      },
+      {
+        "label": "TilingSprite",
+        "src": "TilingSprite"
+      },
+      {
+        "label": "DragonBone",
+        "src": "DragonBone"
+      },
+      {
+        "label": "Lottie",
+        "src": "Lottie"
+      },
+      {
+        "label": "Transition",
+        "src": "Transition"
+      },
+      {
+        "label": "A11Y",
+        "src": "A11Y"
+      }
+    ]
+  },
+  {
+    "group": "其他",
+    "src": "misc",
+    "demos": [
+      {
+        "label": "ref",
+        "src": "ref"
+      },
+      {
+        "label": "addListeningProps",
+        "src": "addListeningProps"
+      },
+      {
+        "label": "addSystem",
+        "src": "addSystem"
+      }
+    ]
+  }
+]

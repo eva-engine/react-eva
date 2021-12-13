@@ -1,0 +1,47 @@
+import {createElement, render, useMemo, useState, useCallback} from 'react';
+
+import {Eva} from '@eva/rax-eva';
+import Spine from '@eva/rax-eva-spine';
+
+function App() {
+  const [animationName, setAnimationName] = useState('idle');
+
+  const spineSrc = useMemo(() => ({
+    image: 'https://gw.alicdn.com/tfs/TB1bZPn18r0gK0jSZFnXXbRRXXa-684-684.png',
+    ske:  './json/a71755e337bb77d9a6c1e93232d8aac7.json',
+    atlas: './json/b1a5c40fbd582a0e5ac073b6493f7fe8.atlas',
+  }), []);
+
+  const changeAnimation = useCallback(() => {
+    setAnimationName(pre => {
+      if (pre === 'idle') {
+        return 'pet'
+      } else {
+        return 'idle'
+      }
+    });
+  }, [])
+
+  return (
+    <Eva width="100%" height="100%">
+      <scene>
+        <Spine
+          onClick={changeAnimation}
+          src={spineSrc}
+          animationName={animationName}
+          loop={true}
+          autoPlay={true}
+          anchorX={0.5}
+          anchorY={0.5}
+          originX={0.5}
+          originY={0.5}
+        />
+      </scene>
+    </Eva>
+  );
+}
+
+
+render(<App />, document.getElementById('root'), {
+  driver: new DriverEva(DriverUniversal)
+});

@@ -1,0 +1,282 @@
+
+
+
+
+vocalv51.png
+size: 805,804
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+chibang_l
+  rotate: false
+  xy: 457, 588
+  size: 271, 216
+  orig: 271, 216
+  offset: 0, 0
+  index: -1
+chibang_r
+  rotate: true
+  xy: 0, 80
+  size: 298, 231
+  orig: 298, 231
+  offset: 0, 0
+  index: -1
+daizi1
+  rotate: false
+  xy: 774, 705
+  size: 31, 99
+  orig: 31, 99
+  offset: 0, 0
+  index: -1
+erji
+  rotate: true
+  xy: 502, 302
+  size: 116, 77
+  orig: 116, 77
+  offset: 0, 0
+  index: -1
+erji1
+  rotate: true
+  xy: 457, 184
+  size: 116, 77
+  orig: 116, 77
+  offset: 0, 0
+  index: -1
+huxu
+  rotate: false
+  xy: 264, 529
+  size: 185, 66
+  orig: 185, 66
+  offset: 0, 0
+  index: -1
+jita
+  rotate: false
+  xy: 0, 380
+  size: 262, 424
+  orig: 262, 424
+  offset: 0, 0
+  index: -1
+kuzi
+  rotate: true
+  xy: 362, 647
+  size: 157, 89
+  orig: 157, 89
+  offset: 0, 0
+  index: -1
+kuzi1
+  rotate: true
+  xy: 169, 0
+  size: 32, 51
+  orig: 32, 51
+  offset: 0, 0
+  index: -1
+saihong
+  rotate: true
+  xy: 730, 588
+  size: 216, 42
+  orig: 216, 42
+  offset: 0, 0
+  index: -1
+shangyanpi_l
+  rotate: true
+  xy: 536, 190
+  size: 110, 88
+  orig: 110, 88
+  offset: 0, 0
+  index: -1
+shangyanpi_l1
+  rotate: true
+  xy: 658, 101
+  size: 87, 74
+  orig: 87, 74
+  offset: 0, 0
+  index: -1
+shangyanpi_r
+  rotate: true
+  xy: 574, 97
+  size: 91, 82
+  orig: 91, 82
+  offset: 0, 0
+  index: -1
+shangyanpi_r1
+  rotate: false
+  xy: 693, 16
+  size: 83, 83
+  orig: 83, 83
+  offset: 0, 0
+  index: -1
+shetou
+  rotate: true
+  xy: 778, 120
+  size: 20, 24
+  orig: 20, 24
+  offset: 0, 0
+  index: -1
+shou
+  rotate: true
+  xy: 457, 95
+  size: 87, 115
+  orig: 87, 115
+  offset: 0, 0
+  index: -1
+tou
+  rotate: true
+  xy: 233, 83
+  size: 295, 222
+  orig: 295, 222
+  offset: 0, 0
+  index: -1
+weiba
+  rotate: false
+  xy: 0, 20
+  size: 167, 58
+  orig: 167, 58
+  offset: 0, 0
+  index: -1
+weijin1
+  rotate: false
+  xy: 378, 15
+  size: 122, 66
+  orig: 122, 66
+  offset: 0, 0
+  index: -1
+xie_l
+  rotate: true
+  xy: 581, 305
+  size: 65, 41
+  orig: 65, 41
+  offset: 0, 0
+  index: -1
+xie_r
+  rotate: true
+  xy: 457, 354
+  size: 64, 37
+  orig: 64, 37
+  offset: 0, 0
+  index: -1
+yan_l
+  rotate: true
+  xy: 626, 275
+  size: 95, 102
+  orig: 95, 102
+  offset: 0, 0
+  index: -1
+yan_r
+  rotate: true
+  xy: 626, 190
+  size: 83, 91
+  orig: 83, 91
+  offset: 0, 0
+  index: -1
+yanbai
+  rotate: true
+  xy: 264, 597
+  size: 207, 96
+  orig: 207, 96
+  offset: 0, 0
+  index: -1
+yifu
+  rotate: true
+  xy: 451, 420
+  size: 166, 165
+  orig: 166, 165
+  offset: 0, 0
+  index: -1
+youer
+  rotate: true
+  xy: 618, 489
+  size: 97, 124
+  orig: 97, 124
+  offset: 0, 0
+  index: -1
+youshou
+  rotate: false
+  xy: 264, 385
+  size: 83, 142
+  orig: 83, 142
+  offset: 0, 0
+  index: -1
+youshou1
+  rotate: false
+  xy: 614, 7
+  size: 77, 88
+  orig: 77, 88
+  offset: 0, 0
+  index: -1
+youyan
+  rotate: true
+  xy: 362, 605
+  size: 40, 56
+  orig: 40, 56
+  offset: 0, 0
+  index: -1
+yxz
+  rotate: false
+  xy: 740, 366
+  size: 52, 107
+  orig: 52, 107
+  offset: 0, 0
+  index: -1
+zui1
+  rotate: true
+  xy: 730, 274
+  size: 90, 71
+  orig: 90, 71
+  offset: 0, 0
+  index: -1
+zui2
+  rotate: true
+  xy: 719, 193
+  size: 79, 67
+  orig: 79, 67
+  offset: 0, 0
+  index: -1
+zui3
+  rotate: true
+  xy: 734, 142
+  size: 49, 51
+  orig: 49, 51
+  offset: 0, 0
+  index: -1
+zuoer
+  rotate: true
+  xy: 618, 372
+  size: 115, 120
+  orig: 115, 120
+  offset: 0, 0
+  index: -1
+zuoshou
+  rotate: false
+  xy: 349, 394
+  size: 98, 133
+  orig: 98, 133
+  offset: 0, 0
+  index: -1
+zuoshou1
+  rotate: true
+  xy: 502, 10
+  size: 83, 110
+  orig: 83, 110
+  offset: 0, 0
+  index: -1
+zuoyan
+  rotate: true
+  xy: 169, 34
+  size: 44, 59
+  orig: 44, 59
+  offset: 0, 0
+  index: -1
+zxz
+  rotate: false
+  xy: 744, 475
+  size: 61, 111
+  orig: 61, 111
+  offset: 0, 0
+  index: -1
+zxz+
+  rotate: true
+  xy: 233, 1
+  size: 80, 143
+  orig: 80, 143
+  offset: 0, 0
+  index: -1

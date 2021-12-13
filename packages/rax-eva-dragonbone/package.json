@@ -1,0 +1,44 @@
+{
+  "name": "@eva/rax-eva-dragonbone",
+  "author": "zhuxun.jb",
+  "version": "0.1.1",
+  "description": "Rax EVA是一个让开发同学能够在Rax技术体系下，利用EVA JS的游戏研发能力，开发动画、游戏类场景的框架。它可以让开发同学用熟悉的JSX和Hooks语法编写动画、游戏场景的代码。",
+  "main": "lib/index.js",
+  "esmodule": "es/index.js",
+  "module": "src/index.js",
+  "types": "types/index.d.ts",
+  "files": [
+    "dist",
+    "es",
+    "lib",
+    "src",
+    "types"
+  ],
+  "keywords": [
+    "react",
+    "eva",
+    "rax-eva",
+    "rax-component",
+    "dragonbone"
+  ],
+  "engines": {
+    "npm": ">=10.0.0"
+  },
+  "scripts": {
+    "build": "build-scripts build && rm -f lib/*.d.ts"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "@eva/rax-eva": "^0.1.1",
+    "@eva/plugin-renderer-dragonbone": "^1.2.1"
+  },
+  "devDependencies": {},
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "@eva/rax-eva": "^0.1.1",
+    "@eva/plugin-renderer-dragonbone": "^1.2.1"
+  },
+  "homepage": "https://unpkg.com/@eva/rax-eva-dragonbone@0.1.1/build/index.html"
+}

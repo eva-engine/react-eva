@@ -1,0 +1,75 @@
+:root {
+  --deg: 70deg;
+  --xOffset: 120px;
+  --scale: 0.95;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#demo {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.bg {
+  background-color: #FFF056;
+  color: #5E5E5E;
+  font-size: 38px;
+}
+
+.hud {
+  background-color: #929292;
+  color: #5E5E5E;
+  font-size: 38px;
+}
+
+canvas {
+  background-color: #61D836;
+}
+
+.normal {
+  background-color: #56C1FF;
+  color: #5E5E5E;
+  width: 100%;
+  flex: 1;
+  font-size: 38px;
+}
+
+.perspective {
+  transform-style: preserve-3d;
+  perspective: 1000vw;
+  transform: scale(var(--scale));
+}
+
+.perspective .eva {
+  transform-style: preserve-3d;
+}
+
+.perspective .bg {
+  transform: translate3d(calc(var(--xOffset) * -1), 0, 0px)
+    rotate3d(0, 1, 0, var(--deg)) !important;
+}
+
+
+.perspective canvas {
+  transform: translate3d(0px, 0px, 0) rotate3d(0, 1, 0, var(--deg)) !important;
+}
+
+.perspective .hud {
+  transform: translate3d(var(--xOffset), 0px, 0) rotate3d(0, 1, 0, var(--deg)) !important;
+}
+
+.perspective .normal {
+  transform: translate3d(calc(var(--xOffset) * 2), 0px, 0)
+    rotate3d(0, 1, 0, var(--deg)) !important;
+}

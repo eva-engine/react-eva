@@ -1,0 +1,14 @@
+{
+  "assets":{
+      "type":"command",
+      "command":{
+          "cmd":[
+            "npm install",
+            "npm run bootstrap",
+            "npm run build -- --packages=*",
+            "npm run playground-public",
+            "mv ./packages/playground/public $BUILD_DEST"
+          ]
+      }
+  }
+}
