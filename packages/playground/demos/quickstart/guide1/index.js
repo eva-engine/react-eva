@@ -1,13 +1,13 @@
 import {createElement, render} from 'react';
 
-import {Eva} from '@eva/rax-eva';
+import {Eva} from '@eva/react-eva';
 
 function App() {
   return (
     <Eva width='100%' height='100%'>
       <scene>
         <gameobject fill="#fff" fontSize={38}>
-          Hello Rax EVA
+          Hello React EVA
         </gameobject>
       </scene>
     </Eva>

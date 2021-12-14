@@ -1,7 +1,7 @@
 import {createElement, render, useCallback} from 'react';
 
-import {Eva, useComponents} from '@eva/rax-eva';
-import {useImageResource, useImage} from '@eva/rax-eva-image';
+import {Eva, useComponents} from '@eva/react-eva';
+import {useImageResource, useImage} from '@eva/react-eva-image';
 
 function App() {
   const resource1 = useImageResource({

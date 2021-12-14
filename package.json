@@ -1,7 +1,7 @@
 {
-  "name": "rax-eva",
+  "name": "react-eva",
   "version": "0.1.1",
-  "author": "zhuxun.jb",
+  "author": "Chrise",
   "private": true,
   "engines": {
     "npm": ">=10.0.0"

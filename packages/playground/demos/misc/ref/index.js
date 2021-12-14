@@ -1,6 +1,6 @@
 import {createElement, render, useRef, useEffect} from 'react';
 
-import {Eva, EvaRefObject} from '@eva/rax-eva';
+import {Eva, EvaRefObject} from '@eva/react-eva';
 
 function App() {
   const ref = useRef(null);
@@ -38,7 +38,7 @@ function App() {
           fill="#ff9000"
           fontSize={40}
         >
-          Hello Rax EVA
+          Hello React EVA
         </gameobject>
       </scene>
     </Eva>

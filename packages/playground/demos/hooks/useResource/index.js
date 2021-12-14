@@ -7,7 +7,7 @@ import {
   ResourceType,
   useComponent,
   useComponents,
-} from '@eva/rax-eva';
+} from '@eva/react-eva';
 import {Img as ImgComponent, ImgSystem} from '@eva/plugin-renderer-img';
 
 addSystem(new ImgSystem());

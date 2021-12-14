@@ -8,7 +8,7 @@ import {
   ResourceType,
   useComponent,
   useComponents,
-} from '@eva/rax-eva';
+} from '@eva/react-eva';
 import {SpriteAnimation as SpriteAnimationComponent, SpriteAnimationSystem} from '@eva/plugin-renderer-sprite-animation';
 
 addSystem(new SpriteAnimationSystem());

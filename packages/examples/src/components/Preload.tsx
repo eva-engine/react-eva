@@ -1,8 +1,8 @@
-import {useImageResource} from '@eva/rax-eva-image';
-import {useSpriteResource} from '@eva/rax-eva-sprite';
-import {useSpriteAnimationResource} from '@eva/rax-eva-sprite-animation';
-import {useDragonBoneResource} from '@eva/rax-eva-dragonbone';
-import {useSpineResource} from '@eva/rax-eva-spine';
+import {useImageResource} from '@eva/react-eva-image';
+import {useSpriteResource} from '@eva/react-eva-sprite';
+import {useSpriteAnimationResource} from '@eva/react-eva-sprite-animation';
+import {useDragonBoneResource} from '@eva/react-eva-dragonbone';
+import {useSpineResource} from '@eva/react-eva-spine';
 
 export default function usePreloadResources() {
   return {

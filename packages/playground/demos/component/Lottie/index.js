@@ -1,7 +1,7 @@
 import {createElement, render} from 'react';
 
-import {Eva} from '@eva/rax-eva';
-import Lottie from '@eva/rax-eva-lottie';
+import {Eva} from '@eva/react-eva';
+import Lottie from '@eva/react-eva-lottie';
 
 function App() {
   return (

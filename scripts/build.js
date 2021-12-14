@@ -6,7 +6,7 @@
  *
  * Example:
  *  compile all packages: node ./scripts/compile.js
- *  watch compile some packages: node ./scripts/compile.js --watch --packages rax,rax-cli
+ *  watch compile some packages: node ./scripts/compile.js --watch --packages react,react-cli
  */
 'use strict';
 

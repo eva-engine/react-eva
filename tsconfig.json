@@ -38,17 +38,17 @@
       "@eva/eva-plugin-renderer-tiling-sprite": ["node_modules/@eva/eva-plugin-renderer-tiling-sprite/types"],
       "@eva/eva-plugin-transition": ["node_modules/@eva/eva-plugin-transition/types"],
       "@eva/fiber-eva": ["packages/fiber-eva/types"],
-      "@eva/rax-eva": ["packages/rax-eva/types"],
-      "@eva/rax-eva-a11y": ["packages/rax-eva-a11y/types"],
-      "@eva/rax-eva-dragonbone": ["packages/rax-eva-dragonbone/types"],
-      "@eva/rax-eva-graphics": ["packages/rax-eva-graphics/types"],
-      "@eva/rax-eva-image": ["packages/rax-eva-image/types"],
-      "@eva/rax-eva-mask": ["packages/rax-eva-mask/types"],
-      "@eva/rax-eva-spine": ["packages/rax-eva-spine/types"],
-      "@eva/rax-eva-sprite": ["packages/rax-eva-sprite/types"],
-      "@eva/rax-eva-sprte-animation": ["packages/rax-eva-sprte-animation/types"],
-      "@eva/rax-eva-tiling-sprite": ["packages/rax-eva-tiling-sprite/types"],
-      "@eva/rax-eva-transition": ["packages/rax-eva-transition/types"]
+      "@eva/react-eva": ["packages/react-eva/types"],
+      "@eva/react-eva-a11y": ["packages/react-eva-a11y/types"],
+      "@eva/react-eva-dragonbone": ["packages/react-eva-dragonbone/types"],
+      "@eva/react-eva-graphics": ["packages/react-eva-graphics/types"],
+      "@eva/react-eva-image": ["packages/react-eva-image/types"],
+      "@eva/react-eva-mask": ["packages/react-eva-mask/types"],
+      "@eva/react-eva-spine": ["packages/react-eva-spine/types"],
+      "@eva/react-eva-sprite": ["packages/react-eva-sprite/types"],
+      "@eva/react-eva-sprte-animation": ["packages/react-eva-sprte-animation/types"],
+      "@eva/react-eva-tiling-sprite": ["packages/react-eva-tiling-sprite/types"],
+      "@eva/react-eva-transition": ["packages/react-eva-transition/types"]
     }
   }
 }

@@ -1,7 +1,7 @@
 import {createElement, memo, render, useCallback, useState} from 'react';
 
-import {Eva, ResourceType} from '@eva/rax-eva';
-import Image from '@eva/rax-eva-image';
+import {Eva, ResourceType} from '@eva/react-eva';
+import Image from '@eva/react-eva-image';
 
 const preloadResources = [
   {

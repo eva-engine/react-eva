@@ -1,8 +1,8 @@
 import {createElement, useCallback, render, useState, useMemo} from 'react';
 
-import {Eva} from '@eva/rax-eva';
-import Image from '@eva/rax-eva-image';
-import '@eva/rax-eva-a11y';
+import {Eva} from '@eva/react-eva';
+import Image from '@eva/react-eva-image';
+import '@eva/react-eva-a11y';
 
 const src1 = 'https://gw.alicdn.com/tfs/TB1pHcJaycKOu4jSZKbXXc19XXa-84-85.png';
 const src2 = 'https://gw.alicdn.com/tfs/TB1GfBpvUT1gK0jSZFhXXaAtVXa-84-85.png';

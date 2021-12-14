@@ -1,6 +1,6 @@
 import {createElement, useState, useCallback, Fragment} from 'react';
 import './index.css';
-import {Eva} from '@eva/rax-eva';
+import {Eva} from '@eva/react-eva';
 import usePreloadResources from './components/Preload';
 import GameBg from './components/GameBg';
 import GameScene from './components/GameScene';

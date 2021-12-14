@@ -1,7 +1,7 @@
 import {createElement, render, useRef, useEffect} from 'react';
 
-import {Eva, addListeningProps, addSystem, useResource, ResourceType} from '@eva/rax-eva';
-import {useImageResource} from '@eva/rax-eva-image'
+import {Eva, addListeningProps, addSystem, useResource, ResourceType} from '@eva/react-eva';
+import {useImageResource} from '@eva/react-eva-image'
 import {Img} from '@eva/plugin-renderer-img';
 
 addListeningProps(['resource'], Img);

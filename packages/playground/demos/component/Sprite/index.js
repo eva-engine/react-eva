@@ -1,7 +1,7 @@
 import {createElement, render, useMemo} from 'react';
 
-import {Eva} from '@eva/rax-eva';
-import Sprite from '@eva/rax-eva-sprite';
+import {Eva} from '@eva/react-eva';
+import Sprite from '@eva/react-eva-sprite';
 
 function App() {
   const src = useMemo(() => ({

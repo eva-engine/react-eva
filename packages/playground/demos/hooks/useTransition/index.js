@@ -5,9 +5,9 @@ import {
   useResource,
   ResourceType,
   useComponents
-} from '@eva/rax-eva';
-import Image from '@eva/rax-eva-image';
-import {useTransition} from '@eva/rax-eva-transition';
+} from '@eva/react-eva';
+import Image from '@eva/react-eva-image';
+import {useTransition} from '@eva/react-eva-transition';
 
 function App() {
   const startSrc = useResource({
@@ -102,7 +102,7 @@ function App() {
 
   const change = useCallback(() => {
     transition.once('finish', () => {
-      location.href = 'https://yuque.com/eva/rax-eva/intro';
+      location.href = 'https://yuque.com/eva/react-eva/intro';
     }).play('bounce', 1);
   }, []);
 

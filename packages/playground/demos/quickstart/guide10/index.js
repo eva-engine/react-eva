@@ -2,7 +2,7 @@ import {createElement, render} from 'react';
 
 import {
   Eva
-} from '@eva/rax-eva';
+} from '@eva/react-eva';
 
 function App() {
   return (

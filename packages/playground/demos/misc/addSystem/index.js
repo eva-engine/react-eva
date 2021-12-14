@@ -1,8 +1,8 @@
 import {createElement, render, useRef, useEffect, useCallback} from 'react';
 
 import { Component, decorators, System, OBSERVER_TYPE, GameObject } from '@eva/eva.js';
-import {Eva, addSystem, ResourceType, useComponent, useComponents} from '@eva/rax-eva';
-import {useImageResource, useImage} from '@eva/rax-eva-image';
+import {Eva, addSystem, ResourceType, useComponent, useComponents} from '@eva/react-eva';
+import {useImageResource, useImage} from '@eva/react-eva-image';
 
 class Change extends Component {
   static componentName = 'Change';

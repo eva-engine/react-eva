@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   entry: {
-    'react': './src/rax.js',
+    'react': './src/react.js',
   },
   output: {
     filename: '[name].js',

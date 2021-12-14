@@ -1,7 +1,7 @@
 import {createElement, render, useCallback} from 'react';
 
-import {Eva, useComponent, useComponents} from '@eva/rax-eva';
-import {useTilingSpriteResource, useTilingSprite} from '@eva/rax-eva-tiling-sprite';
+import {Eva, useComponent, useComponents} from '@eva/react-eva';
+import {useTilingSpriteResource, useTilingSprite} from '@eva/react-eva-tiling-sprite';
 
 function App() {
   const resource = useTilingSpriteResource({

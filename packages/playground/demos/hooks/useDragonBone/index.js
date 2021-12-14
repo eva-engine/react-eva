@@ -1,7 +1,7 @@
 import {createElement, render, useCallback} from 'react';
 
-import {Eva, useComponents} from '@eva/rax-eva';
-import {useDragonBoneResource, useDragonBone} from '@eva/rax-eva-dragonbone';
+import {Eva, useComponents} from '@eva/react-eva';
+import {useDragonBoneResource, useDragonBone} from '@eva/react-eva-dragonbone';
 
 function App() {
   let state = 1;

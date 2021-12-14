@@ -1,7 +1,7 @@
 import {createElement, render, useMemo} from 'react';
 
-import {Eva} from '@eva/rax-eva';
-import Spine from '@eva/rax-eva-spine';
+import {Eva} from '@eva/react-eva';
+import Spine from '@eva/react-eva-spine';
 
 function App() {
 

@@ -1,7 +1,7 @@
 import {createElement, render, useCallback, useEffect, useRef} from 'react';
 
-import {Eva} from '@eva/rax-eva';
-import Graphics from '@eva/rax-eva-graphics';
+import {Eva} from '@eva/react-eva';
+import Graphics from '@eva/react-eva-graphics';
 
 function App() {
   const ref = useRef(null);

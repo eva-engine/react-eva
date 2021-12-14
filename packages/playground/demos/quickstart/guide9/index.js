@@ -4,7 +4,7 @@ import {
   Eva,
   addSystem,
   addListeningProps
-} from '@eva/rax-eva';
+} from '@eva/react-eva';
 import {A11y, A11yActivate, A11ySystem} from '@eva/plugin-a11y';
 
 addSystem(({
@@ -27,7 +27,7 @@ addListeningProps(['role'], A11y);
 
 function App() {
   const clickHandler = useCallback(() => {
-    window.open('https://yuque.com/eva/rax-eva');
+    window.open('https://yuque.com/eva/react-eva');
   }, []);
 
   return (
@@ -39,10 +39,10 @@ function App() {
           height={100}
           fontSize={38}
           onClick={clickHandler}
-          aria-label="Hello Rax Eva"
+          aria-label="Hello React Eva"
           role="button"
         >
-        Hello Rax Eva
+        Hello React Eva
         </gameobject>
       </scene>
     </Eva>

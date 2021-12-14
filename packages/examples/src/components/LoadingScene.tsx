@@ -1,6 +1,6 @@
 import {createElement, useCallback} from 'react';
-import {useComponents, usePreload} from '@eva/rax-eva';
-import {useGraphics} from '@eva/rax-eva-graphics';
+import {useComponents, usePreload} from '@eva/react-eva';
+import {useGraphics} from '@eva/react-eva-graphics';
 
 export default function LoadingScene() {
   const preload = usePreload();

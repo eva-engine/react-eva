@@ -1,9 +1,9 @@
 import {createElement, render} from 'react';
 
-import {Eva, useComponents} from '@eva/rax-eva';
-import {useSpriteResource, useSprite} from '@eva/rax-eva-sprite';
+import {Eva, useComponents} from '@eva/react-eva';
+import {useSpriteResource, useSprite} from '@eva/react-eva-sprite';
 
-document.title = 'rax-eva-sprite demo';
+document.title = 'react-eva-sprite demo';
 
 function App() {
   const resource = useSpriteResource({

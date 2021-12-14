@@ -1,7 +1,7 @@
 import {createElement, render, useCallback, useMemo, useState} from 'react';
 
-import {Eva} from '@eva/rax-eva';
-import SpriteAnimation from '@eva/rax-eva-sprite-animation';
+import {Eva} from '@eva/react-eva';
+import SpriteAnimation from '@eva/react-eva-sprite-animation';
 
 function App() {
   const [speed, setSpeed] = useState(100);

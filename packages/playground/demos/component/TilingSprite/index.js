@@ -1,7 +1,7 @@
 import {createElement, render} from 'react';
 
-import {Eva} from '@eva/rax-eva';
-import TilingSprite from '@eva/rax-eva-tiling-sprite';
+import {Eva} from '@eva/react-eva';
+import TilingSprite from '@eva/react-eva-tiling-sprite';
 
 function App() {
   return (

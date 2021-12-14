@@ -1,5 +1,5 @@
 import * as Babel from '@babel/standalone';
-import getBabelConfig from '../libs/rax-babel-config';
+import getBabelConfig from '../libs/react-babel-config';
 
 const babelConfig = getBabelConfig({});
 

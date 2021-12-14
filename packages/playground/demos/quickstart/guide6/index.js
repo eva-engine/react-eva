@@ -1,8 +1,8 @@
 import {createElement, render, useEffect} from 'react';
 
-import {Eva} from '@eva/rax-eva';
-import {useTransition} from '@eva/rax-eva-transition';
-import SpriteAnimation from '@eva/rax-eva-sprite-animation';
+import {Eva} from '@eva/react-eva';
+import {useTransition} from '@eva/react-eva-transition';
+import SpriteAnimation from '@eva/react-eva-sprite-animation';
 
 function App() {
   const MoveAnimation = useTransition((context) => {

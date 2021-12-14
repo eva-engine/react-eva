@@ -40,7 +40,7 @@ function useEvaDriver(filter, level = 'debug') {
         driverName = 'Eva Driver';
         returnValue = oldValue.apply(this, args);
       } else {
-        driverName = 'Rax Driver';
+        driverName = 'React Driver';
         returnValue = _driver[methodName](...args);
       }
 

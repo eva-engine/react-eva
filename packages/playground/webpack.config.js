@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   entry: {
-    'rax-eva': './src/rax-eva.js',
+    'react-eva': './src/react-eva.js',
   },
   devtool: 'source-map',
   output: {

@@ -4,12 +4,12 @@ import {
   useRef,
   useCallback,
 } from 'react';
-import {usePreload} from '@eva/rax-eva';
-import '@eva/rax-eva-a11y';
-import Image from '@eva/rax-eva-image';
-import Sprite from '@eva/rax-eva-sprite';
-import SpriteAnimation from '@eva/rax-eva-sprite-animation';
-import DragonBone, {DragonBoneRefObject} from '@eva/rax-eva-dragonbone';
+import {usePreload} from '@eva/react-eva';
+import '@eva/react-eva-a11y';
+import Image from '@eva/react-eva-image';
+import Sprite from '@eva/react-eva-sprite';
+import SpriteAnimation from '@eva/react-eva-sprite-animation';
+import DragonBone, {DragonBoneRefObject} from '@eva/react-eva-dragonbone';
 import HarvestGold, {HarvestGoldRef} from './HarvestGold';
 import DancingCat from './DancingCat';
 

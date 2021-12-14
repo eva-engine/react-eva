@@ -14,8 +14,8 @@ import {
   useImperativeHandle,
 } from 'react';
 import ReactDOM from 'react-dom';
-// import {Eva} from '@eva/rax-eva';
-// import Image, {useImageResource} from '@eva/rax-eva-image';
+// import {Eva} from '@eva/react-eva';
+// import Image, {useImageResource} from '@eva/react-eva-image';
 
 function App() {
   const [remove, setRemove] = useState(false);

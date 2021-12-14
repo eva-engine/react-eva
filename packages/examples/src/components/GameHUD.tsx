@@ -1,8 +1,8 @@
 import {createElement, useRef, useCallback} from 'react';
-import createPortal from "rax-create-portal";
+import ReactDOM from 'react-dom';
 
-const Portal = ({ children }) => {
-  return createPortal(children, document.body);
+const Portal = ({children}) => {
+  return ReactDOM.createPortal(children, document.body);
 };
 
 export default function GameHUD({show}) {

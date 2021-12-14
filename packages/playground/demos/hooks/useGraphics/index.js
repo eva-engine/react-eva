@@ -1,7 +1,7 @@
 import {createElement, render, useCallback, useEffect} from 'react';
 
-import {Eva, useComponents} from '@eva/rax-eva';
-import {useGraphics} from '@eva/rax-eva-graphics';
+import {Eva, useComponents} from '@eva/react-eva';
+import {useGraphics} from '@eva/react-eva-graphics';
 
 function App() {
   const drawOutter = useCallback(context => {

@@ -1,7 +1,7 @@
 import {createElement, render, useEffect} from 'react';
 
-import {Eva, useComponents} from '@eva/rax-eva';
-import {useLottie, useLottieResource} from '@eva/rax-eva-lottie';
+import {Eva, useComponents} from '@eva/react-eva';
+import {useLottie, useLottieResource} from '@eva/react-eva-lottie';
 
 function App() {
   const resource = useLottieResource({

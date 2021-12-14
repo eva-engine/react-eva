@@ -15,14 +15,14 @@ module.exports = {
   output: {
     dir: 'public', // 配置构建部署时输出的目录，默认dist目录
     html: {
-      title: 'Rax EVA Playground',
+      title: 'React EVA Playground',
     },
   },
   staticFolder: 'static',
   demoList: '.demoList.json', // demoList配置文件的文件名，默认为.demoList.json
-  name: 'Rax EVA Playground', // 配置Playground的标题
+  name: 'React EVA Playground', // 配置Playground的标题
   version: `v${pkg.version}`,
-  homePage: 'https://eva.js.org/rax-eva-playground', // 配置Playground链接跳转的主页
+  homePage: 'https://eva.js.org/react-eva-playground', // 配置Playground链接跳转的主页
   boxTheme: 'monokai', // 配置代码编辑器的主题
   // 可选主题: active4d, allHallowsEve, amy, blackboard, brillianceBlack,
   // brillianceDull, chromeDevtools, cloudsMidnight, clouds, cobalt,
@@ -55,8 +55,8 @@ module.exports = {
       getEVAUrl('plugin-renderer-lottie', 'EVA.plugin.renderer.lottie.min.js'),
       getEVAUrl('plugin-transition', 'EVA.plugin.transition.min.js'),
       getEVAUrl('plugin-a11y', 'EVA.plugin.a11y.min.js'),
-      './rax.js',
-      './rax-eva.js'
+      './react.js',
+      './react-eva.js'
     ],
     css: [],
   },

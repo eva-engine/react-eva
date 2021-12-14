@@ -1,12 +1,12 @@
 import {createElement, render, useCallback} from 'react';
 
-import {Eva, useComponents} from '@eva/rax-eva';
+import {Eva, useComponents} from '@eva/react-eva';
 import {
   useSpriteAnimationResource,
   useSpriteAnimation,
-} from '@eva/rax-eva-sprite-animation';
+} from '@eva/react-eva-sprite-animation';
 
-document.title = 'rax-eva-sprite-animation demo';
+document.title = 'react-eva-sprite-animation demo';
 
 function App() {
   const resource = useSpriteAnimationResource({

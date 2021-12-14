@@ -1,9 +1,9 @@
 import {createElement, render, useEffect} from 'react';
 
-import {Eva, useComponents} from '@eva/rax-eva';
-import {useImageResource, useImage} from '@eva/rax-eva-image';
-import {useTransition} from '@eva/rax-eva-transition';
-import {useMask, MaskType} from '@eva/rax-eva-mask';
+import {Eva, useComponents} from '@eva/react-eva';
+import {useImageResource, useImage} from '@eva/react-eva-image';
+import {useTransition} from '@eva/react-eva-transition';
+import {useMask, MaskType} from '@eva/react-eva-mask';
 
 function App() {
   const resource = useImageResource({

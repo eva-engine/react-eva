@@ -1,7 +1,7 @@
 import {createElement, render} from 'react';
 
-import {Eva} from '@eva/rax-eva';
-import Image from '@eva/rax-eva-image';
+import {Eva} from '@eva/react-eva';
+import Image from '@eva/react-eva-image';
 
 function App() {
   return (

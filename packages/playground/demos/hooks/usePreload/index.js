@@ -1,4 +1,4 @@
-import {createElement, render, useState, Fragment as RaxFragment} from 'react';
+import {createElement, render, useState, Fragment as ReactFragment} from 'react';
 
 import {
   Eva,
@@ -7,7 +7,7 @@ import {
   ResourceType,
   useComponent,
   useComponents,
-} from '@eva/rax-eva';
+} from '@eva/react-eva';
 import {Img as ImgComponent, ImgSystem} from '@eva/plugin-renderer-img';
 
 addSystem(new ImgSystem());
@@ -65,7 +65,7 @@ function Slogon() {
   });
 
   return (
-    <RaxFragment>
+    <ReactFragment>
       <gameobject
           originX={0.5}
           originY={0.5}
@@ -86,7 +86,7 @@ function Slogon() {
           fill="#fff"
           fontSize={38}
         >
-          {complete ? '用于开发互动的Rax解决方案' : `${progress}%`}
+          {complete ? '用于开发互动的React解决方案' : `${progress}%`}
       </gameobject>
       <gameobject
         anchorX={0.5}
@@ -98,7 +98,7 @@ function Slogon() {
         components={startComponents}
         y={100}
       />
-    </RaxFragment>
+    </ReactFragment>
   )
 }
 

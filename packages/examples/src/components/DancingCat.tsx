@@ -2,11 +2,11 @@ import {
   createElement,
   useEffect,
 } from 'react';
-import {usePreload} from '@eva/rax-eva';
-import '@eva/rax-eva-a11y';
-import Spine from '@eva/rax-eva-spine';
-import { useMask } from '@eva/rax-eva-mask';
-import { useTransition } from '@eva/rax-eva-transition';
+import {usePreload} from '@eva/react-eva';
+import '@eva/react-eva-a11y';
+import Spine from '@eva/react-eva-spine';
+import { useMask } from '@eva/react-eva-mask';
+import { useTransition } from '@eva/react-eva-transition';
 
 export default function DancingCat() {
   const preload = usePreload();

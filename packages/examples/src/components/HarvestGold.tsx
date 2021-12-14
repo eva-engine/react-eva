@@ -3,9 +3,9 @@ import {
   useImperativeHandle,
   forwardRef,
 } from 'react';
-import {useComponents, usePreload, useEva} from '@eva/rax-eva';
-import Image from '@eva/rax-eva-image';
-import {useTransition} from '@eva/rax-eva-transition';
+import {useComponents, usePreload, useEva} from '@eva/react-eva';
+import Image from '@eva/react-eva-image';
+import {useTransition} from '@eva/react-eva-transition';
 
 export interface HarvestGoldRef {
   play(): void;

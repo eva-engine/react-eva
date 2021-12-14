@@ -1,11 +1,11 @@
 import {createElement, render, useEffect} from 'react';
 
-import {Eva} from '@eva/rax-eva';
-import {useTransition} from '@eva/rax-eva-transition';
+import {Eva} from '@eva/react-eva';
+import {useTransition} from '@eva/react-eva-transition';
 import {
   useSpriteAnimationResource,
   useSpriteAnimation,
-} from '@eva/rax-eva-sprite-animation';
+} from '@eva/react-eva-sprite-animation';
 
 function useCarComponents({
   src,

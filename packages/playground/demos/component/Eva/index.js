@@ -8,7 +8,7 @@ import {
   useComponent,
   useComponents,
   ResourceType
-} from '@eva/rax-eva';
+} from '@eva/react-eva';
 import {DragonBone, DragonBoneSystem} from '@eva/plugin-renderer-dragonbone';
 
 addSystem(new DragonBoneSystem());

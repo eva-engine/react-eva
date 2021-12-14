@@ -1,7 +1,7 @@
 import {createElement, render, useCallback, useState} from 'react';
 
-import {Eva, useComponents} from '@eva/rax-eva';
-import {useSpineResource, useSpine} from '@eva/rax-eva-spine';
+import {Eva, useComponents} from '@eva/react-eva';
+import {useSpineResource, useSpine} from '@eva/react-eva-spine';
 
 function App() {
   const [animationName, setAnimationName] = useState('idle');
