@@ -387,7 +387,7 @@ function addEventListener(node, eventName, eventHandler) {
 const NO_CONTEXT = {};
 
 function appendChild(parent, node) {
-  if (node instanceof TextNode) return;
+  // if (node instanceof TextNode) return;
   if (isGameObjectTree(node, parent)) {
     parent.addChild(node);
   } else if (isSceneNode(node, parent)) {
@@ -415,8 +415,6 @@ function removeChild(parent, child) {
 }
 
 function insertBefore(parent, node, before) {
-  console.log(parent, node, before);
-  debugger;
   parent = parent || before.parent || before.parentNode;
 
   if (isGameObjectTree(node, parent)) {
@@ -453,104 +451,6 @@ function shallowDiff(oldObj, newObj) {
   );
 
   return changedProps;
-}
-function diffProperties(evaElement, type, lastProps, nextProps) {
-  let updatePayload = null;
-  const component = evaElement?.components?.find(item => item.name === Text);
-  const transformCom = evaElement?.components?.find(
-    item => item.name === 'Transform',
-  );
-  if (!component) false;
-  if (evaElement instanceof GameObject) {
-    evaElement.transform.size.width = nextProps.width || 100;
-    evaElement.transform.size.height = nextProps.height || 100;
-    evaElement.transform.position.x = nextProps.x || 0;
-    evaElement.transform.position.y = nextProps.y || 0;
-    evaElement.transform.rotation = nextProps.rotation || 0;
-    evaElement.transform.origin.x = nextProps.originX || 0;
-    evaElement.transform.origin.x = nextProps.originX || 0;
-    evaElement.transform.anchor.y = nextProps.anchorY || 0;
-    evaElement.transform.anchor.y = nextProps.anchorY || 0;
-
-    if (
-      nextProps.children &&
-      (typeof nextProps.children === 'string' ||
-        typeof nextProps.children === 'number')
-    ) {
-      let txt = evaElement.getComponent(Text);
-      if (!txt) {
-        txt = evaElement.addComponent(
-          new Text({
-            text: nextProps.children,
-            style: {
-              fill: nextProps.color,
-            },
-          }),
-        );
-      }
-      txt && (txt.text = nextProps.children);
-      txt && (txt.style = nextProps.style);
-    }
-    return true;
-  }
-  // for (let propKey in lastProps) {
-  //   if (
-  //     nextProps.hasOwnProperty(propKey) ||
-  //     !lastProps.hasOwnProperty(propKey) ||
-  //     lastProps[propKey] == null
-  //   ) {
-  //     continue;
-  //   }
-  //   if (propKey === 'transform') {
-  //     transformCom = { ...transformCom, ...propKey };
-  //   } else {
-  //     component = { ...component, ...propKey };
-  //     if (!updatePayload) {
-  //       updatePayload = [];
-  //     }
-  //     updatePayload.push(propKey, null);
-  //   }
-  // }
-  // for (let propKey in nextProps) {
-  //   const nextProp = nextProps[propKey];
-  //   const lastProp = lastProps != null ? lastProps[propKey] : undefined;
-
-  //   if (
-  //     !nextProps.hasOwnProperty(propKey) ||
-  //     nextProp === lastProp ||
-  //     (nextProp == null && lastProp == null)
-  //   ) {
-  //     continue;
-  //   }
-
-  //   if (propKey === 'width') {
-  //     transformCom.size.width = nextProp;
-  //   } else if (propKey === 'height') {
-  //     transformCom.size.height = nextProp;
-  //   } else if (propKey === 'x') {
-  //     transformCom.position.x = nextProp;
-  //   } else if (propKey === 'y') {
-  //     transformCom.position.y = nextProp;
-  //   } else if (propKey === 'rotation') {
-  //     transformCom.rotation = nextProp;
-  //   } else if (propKey === 'originX') {
-  //     transformCom.origin.x = nextProp;
-  //   } else if (propKey === 'originY') {
-  //     transformCom.origin.y = nextProp;
-  //   } else if (propKey === 'anchorX') {
-  //     transformCom.anchor.x = nextProp;
-  //   } else if (propKey === 'anchorY') {
-  //     transformCom.anchor.y = nextProp;
-  //   } else {
-  //     component[propKey] = nextProp;
-
-  //     if (!updatePayload) {
-  //       updatePayload = [];
-  //     }
-  //     updatePayload.push(propKey, nextProp);
-  //   }
-  // }
-  // return updatePayload;
 }
 
 function _updateTextComponent(textComponent) {
@@ -877,45 +777,15 @@ const HostConfig = {
             (typeof children === 'string' || typeof children === 'number')
           ) {
             let textComponent = gameObject.getComponent(Text) as any;
-            // if (!textComponent) {
-            //   const style = getTextStyleProps(props);
-            //   textComponent = gameObject.addComponent(
-            //     new Text({
-            //       text: '',
-            //       style,
-            //     }),
-            //   );
-            // }
-            const style = getTextStyleProps({...restProps});
-            textComponent = gameObject.addComponent(
-              new Text({
-                text: props.children,
-                style,
-              }),
-            );
-            if (textComponent._textId === undefined) {
-              textComponent._textId = _counter.textMap;
-              _counter.textMap += 1;
+            if (!textComponent) {
+              const style = getTextStyleProps({...restProps});
+              textComponent = gameObject.addComponent(
+                new Text({
+                  text: props.children,
+                  style,
+                }),
+              );
             }
-
-            const textId = (textComponent as any)._textId;
-
-            if (_textMap[textId] === undefined) {
-              _textMap[textId] = [];
-            }
-
-            _textMap[textId].push(props.children);
-
-            _updateTextComponent(textComponent);
-
-            const node = new TextNode(
-              `text${textComponent._textId}`,
-              textComponent,
-              _textMap[textId].length - 1,
-            );
-
-            setEvaElement(node);
-            return node;
           }
         }
       }
@@ -943,12 +813,6 @@ const HostConfig = {
           domElement.setAttribute(propName, propValue);
         }
       });
-      // if (isEvaHud(component?._parent)) {
-      //   setEvaHud(node);
-      //   setStyle(node, {
-      //     pointerEvents: 'all',
-      //   });
-      // }
       return domElement;
     }
   },
@@ -1013,7 +877,6 @@ const HostConfig = {
         }
       }
       if (instance instanceof TextNode) {
-        debugger;
         const {textComponent, index} = instance;
         const textId = (textComponent as any)._textId;
         _textMap[textId][index] = newProps.children;
@@ -1021,26 +884,6 @@ const HostConfig = {
       } else {
         // updateText(node, newProps.children );
       }
-      // if (
-      //   newProps.children &&
-      //   (typeof newProps.children === 'string' ||
-      //     typeof newProps.children === 'number')
-      // ) {
-      //   const {children, onClick, ...style} = newProps;
-      //   let txt = instance.getComponent(Text);
-      //   if (!txt) {
-      //     txt = instance.addComponent(
-      //       new Text({
-      //         text: newProps.children,
-      //         style: {
-      //           ...style,
-      //         },
-      //       }),
-      //     );
-      //   }
-      //   txt && (txt.text = newProps.children);
-      //   txt && (txt.style = {...style});
-      // }
     } else {
       updatePayload.forEach(propName => {
         // children changes is done by the other methods like `commitTextUpdate`
@@ -1143,7 +986,6 @@ const HostConfig = {
   appendChild,
 
   appendChildToContainer: (parent, child) => {
-    console.log(parent, child, parent.children);
     parent.appendChild(child);
   },
 

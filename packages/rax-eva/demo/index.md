@@ -94,7 +94,7 @@ const Intro = memo(() => {
         anchorY={0.5}
         originX={0.5}
         originY={0.5}
-        fill="#fff"
+        fill="#b35d9e"
         fontSize={38}
       >
         用于开发互动的React解决方案

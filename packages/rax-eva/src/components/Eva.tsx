@@ -22,7 +22,6 @@ function initInstance(ref) {
   instance.hudElement = instance.rootElement.querySelector('div[eva-hud=true]');
   instance.gameInstance = instance.rootElement.gameInstance;
   instance.listeningProps = instance.rootElement.listeningProps;
-  console.log(instance);
 }
 
 function initPreload(
@@ -138,62 +137,70 @@ const Eva = forwardRef<EvaInstance, Record<string, any>>(
     return (
       <instanceContext.Provider value={instance}>
         <preloadContext.Provider value={preload}>
-          <instanceContext.Consumer>
-            {instanceValue => (
-              <preloadContext.Consumer>
-                {value => (
-                  <eva
-                    {...props}
-                    value={preload}
-                    instance={instanceValue}
-                    ref={_ref}
-                    systems={systems}
-                    listeningProps={listeningProps}
-                  >
-                    <instanceContext.Provider value={instanceValue}>
-                      <preloadContext.Provider value={value}>
-                        {children as any}
-                      </preloadContext.Provider>
-                    </instanceContext.Provider>
-                  </eva>
-                )}
-              </preloadContext.Consumer>
+          <preloadContext.Consumer>
+            {value => (
+              <eva
+                {...props}
+                value={preload}
+                ref={_ref}
+                systems={systems}
+                listeningProps={listeningProps}
+              >
+                <preloadContext.Provider value={value}>
+                  {children as any}
+                </preloadContext.Provider>
+              </eva>
             )}
-          </instanceContext.Consumer>
+          </preloadContext.Consumer>
         </preloadContext.Provider>
       </instanceContext.Provider>
     );
   },
 );
-const Container = ({systems = [], listeningProps = [], children, ...props}) => {
-  const _container = useRef(null);
-  // useImperativeHandle(ref, () => container.current, []);
-  const systemsMemo = useMemo(() => [...instance.systems, ...systems], []);
+const EvaContainer = forwardRef<EvaInstance, Record<string, any>>(
+  (args, ref) => {
+    const {systems = [], listeningProps = [], children, ...props} = args;
+    const _container = useRef(null);
+    useImperativeHandle(ref, () => instance, []);
+    const systemsMemo = useMemo(() => [...instance.systems, ...systems], []);
 
-  const listeningPropsMemo = useMemo(
-    () => [...instance.listeningProps, ...listeningProps],
-    [],
-  );
-  useLayoutEffect(() => {
-    const root = _container.current;
-    const {render, unmountComponentAtNode} = ReconcilerEva;
-    render(
-      <Eva {...props} systems={systemsMemo} listeningProps={listeningPropsMemo}>
-        {children}
-      </Eva>,
-      root,
-      {
-        ...props,
-        systems: systemsMemo,
-        listeningProps: listeningPropsMemo,
-      },
+    const listeningPropsMemo = useMemo(
+      () => [...instance.listeningProps, ...listeningProps],
+      [],
     );
+    useLayoutEffect(() => {
+      const root = _container.current;
+      const {render} = ReconcilerEva;
+      render(
+        <Eva
+          {...props}
+          systems={systemsMemo}
+          listeningProps={listeningPropsMemo}
+        >
+          {children}
+        </Eva>,
+        root,
+        {
+          ...props,
+          systems: systemsMemo,
+          listeningProps: listeningPropsMemo,
+        },
+      );
+    }, [props, children, systemsMemo, listeningPropsMemo]);
 
-    return () => {
-      unmountComponentAtNode(root);
-    };
-  }, [props, children, systemsMemo, listeningPropsMemo]);
-
-  return <div ref={_container}></div>;
-};
-export default memo(Container);
+    useLayoutEffect(() => {
+      const root = _container.current;
+      const {unmountComponentAtNode} = ReconcilerEva;
+      return () => {
+        unmountComponentAtNode(root);
+      };
+    }, []);
+    return (
+      <div
+        ref={_container}
+        style={{width: args.width, height: args.height, ...args.style}}
+      ></div>
+    );
+  },
+);
+export default memo(EvaContainer);

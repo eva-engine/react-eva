@@ -26,10 +26,9 @@ const Reconciler = {
   },
 
   unmountComponentAtNode(container: FiberRoot) {
-    // alert(2)
-    // reconciler.updateContainer(null, container._rootContainer, null, () => {
-    //   //noop
-    // });
+    reconciler.updateContainer(null, container._rootContainer, null, () => {
+      //noop
+    });
   },
 };
 export default Reconciler;
