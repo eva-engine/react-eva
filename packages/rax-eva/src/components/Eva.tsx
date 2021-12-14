@@ -11,7 +11,7 @@ import {resource} from '@eva/eva.js';
 import instance, {EvaInstance} from '../misc/instance';
 import preload from '../misc/preload';
 import {instanceContext, preloadContext} from '../misc/context';
-import ReconcilerEva from '@eva/reconciler-eva';
+import ReconcilerEva from '@eva/fiber-eva';
 function initInstance(ref) {
   instance.rootElement = ref.current;
   instance.canvasElement = instance.rootElement.querySelector(

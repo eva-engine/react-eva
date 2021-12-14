@@ -1,9 +1,9 @@
-## @eva/reconciler-eva
+## @eva/fiber-eva
 
 ## Install
 
 ```
-$ npm install @eva/reconciler-eva --save
+$ npm install @eva/fiber-eva --save
 ```
 
 ## Usage

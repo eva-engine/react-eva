@@ -32,7 +32,6 @@
     "react-dom": "^17.0.2",
     "@eva/rax-eva": "^0.1.1",
     "@eva/plugin-renderer-img": "^1.2.1"
-
   },
   "devDependencies": {},
   "peerDependencies": {
