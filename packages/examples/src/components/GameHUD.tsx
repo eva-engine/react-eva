@@ -23,7 +23,7 @@ export default function GameHUD({show}) {
         <img
           aria-hidden
           src="//gw.alicdn.com/tfs/TB1m6mfx4D1gK0jSZFyXXciOVXa-114-132.png?getAvatar"
-          class="water-drop-static-icon"
+          className="water-drop-static-icon"
         />
       </div>
       <Portal>
