@@ -403,11 +403,11 @@ function removeChild(parent, node) {
     // parent.removeChild(node);
     node.destroy();
   } else if (isBgNode(node)) {
-    _root.removeChild(node);
+    parent.removeChild(node);
   } else if (isHudNode(node)) {
-    _root.removeChild(node);
+    parent.removeChild(node);
   } else if (isEvaNode(node)) {
-    _root.removeChild(node);
+    parent.removeChild(node);
     _destroyGame();
   } else {
     parent.removeChild(node);
