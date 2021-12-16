@@ -397,21 +397,21 @@ function appendChild(parent, node) {
   }
 }
 
-function removeChild(parent, child) {
-  parent.removeChild(child);
-  // if (child instanceof GameObject) {
-  //   if (parent instanceof Game) {
-  //     parent.scene.removeChild(child);
-  //   } else {
-  //     parent.removeChild(child);
-  //   }
-  // } else if (child instanceof Component) {
-  //   if (parent instanceof GameObject) {
-  //     parent.removeComponent(child);
-  //   }
-  // } else {
-  //   throw new Error('kc/h5game cannot supported element');
-  // }
+function removeChild(parent, node) {
+  if (isGameObject(node) || isSceneNode(node, parent)) {
+    // gameobject
+    // parent.removeChild(node);
+    node.destroy();
+  } else if (isBgNode(node)) {
+    parent.removeChild(node);
+  } else if (isHudNode(node)) {
+    parent.removeChild(node);
+  } else if (isEvaNode(node)) {
+    parent.removeChild(node);
+    _destroyGame();
+  } else {
+    parent.removeChild(node);
+  }
 }
 
 function insertBefore(parent, node, before) {
@@ -522,6 +522,12 @@ function setAttribute(node, propKey, propValue) {
   } else {
     processListeningProps(node, {[propKey]: propValue});
   }
+}
+function _destroyGame() {
+  try {
+    _game.pause();
+    (_game as any).destroy?.();
+  } catch (e) {}
 }
 function _createGame(
   options = {
