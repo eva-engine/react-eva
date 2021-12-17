@@ -11,7 +11,7 @@ function getPublicRootInstance(container: FiberRoot) {
   }
   return containerFiber.child.stateNode;
 }
-const {createInstance, reconciler} = createRenderer();
+const {createInstance, destroyInstance, reconciler} = createRenderer();
 // export {createInstance, reconciler};
 const Reconciler = {
   render(element: ReactElement, container: FiberRoot, props) {
@@ -19,15 +19,17 @@ const Reconciler = {
     if (!container._rootContainer) {
       container._rootContainer = reconciler.createContainer(container, false);
       createInstance(props);
+      console.log('mounted');
     }
 
     return reconciler.updateContainer(element, container._rootContainer, null);
     // return getPublicRootInstance(container);
   },
 
-  unmountComponentAtNode(container: FiberRoot) {
+  unmountComponentAtNode(container: FiberRoot, callback) {
     reconciler.updateContainer(null, container._rootContainer, null, () => {
-      //noop
+      console.log('unmount');
+      destroyInstance(callback);
     });
   },
 };

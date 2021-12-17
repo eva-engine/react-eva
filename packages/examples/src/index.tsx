@@ -30,8 +30,8 @@ function App() {
       <Eva
         preloadResources={preloadResources}
         onPreloadComplete={onComplete}
-        width={750}
-        height={1334}
+        width={580}
+        height={1000}
         transparent={true}
         HiRes={true}
         className="eva"

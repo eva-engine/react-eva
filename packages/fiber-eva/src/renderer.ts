@@ -1,9 +1,13 @@
 import ReactReconciler from 'react-reconciler';
+import {convertUnit, cached} from 'style-unit';
 import {GameObject, Game, Component, System} from '@eva/eva.js';
 import {RendererSystem} from '@eva/plugin-renderer';
 import {Render, RenderSystem} from '@eva/plugin-renderer-render';
 import {Text, TextSystem} from '@eva/plugin-renderer-text';
 import {Event, EventSystem} from '@eva/plugin-renderer-event';
+
+const NON_DIMENSIONAL_REG =
+  /opa|ntw|ne[ch]|ex(?:s|g|n|p|$)|^ord|zoo|grid|orp|ows|mnc|^columns$|bs|erim|onit/i;
 
 let _driver,
   _debug,
@@ -358,20 +362,47 @@ class TextNode {
     this.textComponent = textComponent;
   }
 }
-function setStyle(domElement, styles) {
-  Object.keys(styles).forEach(name => {
-    const rawValue = styles[name];
-    const isEmpty =
-      rawValue === null || typeof rawValue === 'boolean' || rawValue === '';
+// function setStyle(domElement, styles) {
+//   Object.keys(styles).forEach(name => {
+//     const rawValue = styles[name];
+//     const isEmpty =
+//       rawValue === null || typeof rawValue === 'boolean' || rawValue === '';
 
-    // Unset the style to its default values using an empty string
-    if (isEmpty) domElement.style[name] = '';
-    else {
-      const value = typeof rawValue === 'number' ? `${rawValue}px` : rawValue;
+//     // Unset the style to its default values using an empty string
+//     if (isEmpty) domElement.style[name] = '';
+//     else {
+//       const value = typeof rawValue === 'number' ? `${rawValue}px` : rawValue;
 
-      domElement.style[name] = value;
+//       domElement.style[name] = value;
+//     }
+//   });
+// }
+const isDimensionalProp = cached(prop => !NON_DIMENSIONAL_REG.test(prop));
+
+/**
+ * @param {object} node target node
+ * @param {object} style target node style value
+ */
+export function setStyle(node, style) {
+  for (let prop in style) {
+    const value = style[prop];
+    let convertedValue;
+
+    if (typeof value === 'number' && isDimensionalProp(prop)) {
+      convertedValue = convertUnit(value + 'rpx');
+    } else {
+      convertedValue = convertUnit(value);
     }
-  });
+
+    // Support CSS custom properties (variables) like { --main-color: "black" }
+    if (prop[0] === '-' && prop[1] === '-') {
+      // reference: https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/setProperty.
+      // style.setProperty do not support Camel-Case style properties.
+      node.style.setProperty(prop, convertedValue);
+    } else {
+      node.style[prop] = convertedValue;
+    }
+  }
 }
 function addEventListener(node, eventName, eventHandler) {
   eventName = EventMap[eventName] || eventName;
@@ -398,6 +429,7 @@ function appendChild(parent, node) {
 }
 
 function removeChild(parent, node) {
+  // if (node instanceof TextNode) return;
   if (isGameObject(node) || isSceneNode(node, parent)) {
     // gameobject
     // parent.removeChild(node);
@@ -407,7 +439,9 @@ function removeChild(parent, node) {
   } else if (isHudNode(node)) {
     parent.removeChild(node);
   } else if (isEvaNode(node)) {
+    _driver?.destroy()
     parent.removeChild(node);
+   
     _destroyGame();
   } else {
     parent.removeChild(node);
@@ -476,7 +510,43 @@ function _setTextStyle(gameObject, propKey, propValue) {
     textComponent.style[propKey] = propValue;
   }
 }
+function createText(text, gameObject, props) {
+  let textComponent = gameObject.getComponent(Text) as any;
 
+  if (!textComponent) {
+    const style = getTextStyleProps(props);
+    textComponent = gameObject.addComponent(
+      new Text({
+        text: '',
+        style,
+      }),
+    );
+  }
+
+  if (textComponent._textId === undefined) {
+    textComponent._textId = _counter.textMap;
+    _counter.textMap += 1;
+  }
+
+  const textId = (textComponent as any)._textId;
+
+  if (_textMap[textId] === undefined) {
+    _textMap[textId] = [];
+  }
+
+  _textMap[textId].push(text);
+
+  _updateTextComponent(textComponent);
+
+  const node = new TextNode(
+    `text${textComponent._textId}`,
+    textComponent,
+    _textMap[textId].length - 1,
+  );
+
+  setEvaElement(node);
+  return node;
+}
 function _findChangedComponents(node, propValue) {
   const newTypes = propValue.map(item => item);
   const changedComponents = [];
@@ -535,6 +605,8 @@ function _createGame(
     height: 100,
   },
 ) {
+  _root = null;
+  _canvas = null;
   _options = {...options};
 
   const {
@@ -559,31 +631,33 @@ function _createGame(
   } else if (_options.resolution === undefined && LowRes === true) {
     _options.resolution = 1;
   }
-  _root = document.createElement('div', {
-    ...props,
-    [EvaRootAttrName]: 'true',
-    component,
-  });
-  _root.setAttribute(EvaRootAttrName, 'true');
-  _canvas = document.createElement('canvas', {
-    ...props,
-    [EvaCanvasAttrName]: 'true',
-    _parent: _root,
-  });
-  _canvas.setAttribute(EvaCanvasAttrName, 'true');
-  setStyle(_root, {
-    width,
-    height,
-    position: 'relative',
-    ...style,
-  });
 
-  setStyle(_canvas, {
-    position: 'absolute',
-    left: '0',
-    top: '0',
-    zIndex: '1',
-  });
+  _root = setReactAttribute(
+    'div',
+    {...props},
+    {
+      width,
+      height,
+      position: 'relative',
+      ...style,
+    },
+    EvaRootAttrName,
+  );
+
+  _canvas = setReactAttribute(
+    'canvas',
+    null,
+    {
+      width,
+      height,
+      ...style,
+      position: 'absolute',
+      left: '0',
+      top: '0',
+      zIndex: '1',
+    },
+    EvaCanvasAttrName,
+  );
   _root.appendChild(_canvas);
 
   const systemCached = {};
@@ -603,21 +677,21 @@ function _createGame(
         100 +
       '';
   }
-
+  _driver = new RendererSystem({
+    canvas: _canvas,
+    width: Number(canvasWidth),
+    height: Number(canvasHeight),
+    transparent,
+    preventScroll,
+    renderType,
+    backgroundColor,
+    resolution: _options.resolution / 2,
+  });
   _game = new Game({
     frameRate,
     autoStart: true,
     systems: [
-      new RendererSystem({
-        canvas: _canvas,
-        width: Number(canvasWidth),
-        height: Number(canvasHeight),
-        transparent,
-        preventScroll,
-        renderType,
-        backgroundColor,
-        resolution: _options.resolution / 2,
-      }),
+      _driver,
       new RenderSystem(),
       new TextSystem(),
       new EventSystem(),
@@ -658,51 +732,81 @@ function _createGame(
     configurable: true,
   });
   setEvaElement(_root);
-  console.log(_root);
   return _root;
 }
-function _createHUD({style, ...props}) {
-  _hud = document.createElement('div', {
-    ...props,
-  });
-
-  _hud.setAttribute(EvaHudAttrName, 'true');
-
-  setStyle(_hud, {
-    width: _options.width,
-    height: _options.height,
-    position: 'absolute',
-    left: '0',
-    top: '0',
-    pointerEvents: 'none',
-    zIndex: '2',
-    ...style,
-  });
-  setEvaElement(_hud);
-
-  return _hud;
+/**
+ * @param {string} type  dom type
+ * @param {object} props  dom props
+ * @param {object} style target dom style value
+ * @param {string} evaAttrName  eva attr name
+ */
+function setReactAttribute(type, props, style, evaAttrName?: string) {
+  const domElement = document.createElement(type, props);
+  if (style) {
+    setStyle(domElement, style);
+  }
+  if (evaAttrName) {
+    domElement.setAttribute(evaAttrName, 'true');
+  }
+  if (props) {
+    Object.keys(props).forEach(propName => {
+      const propValue = props[propName];
+      if (propName === 'style') {
+        //noop
+      } else if (propName === 'children') {
+        if (typeof propValue === 'string' || typeof propValue === 'number') {
+          domElement.textContent = propValue;
+        }
+      } else if (propName === 'className') {
+        domElement.setAttribute('class', propValue);
+      } else if (isEventName(propName)) {
+        const eventName = propName.toLowerCase().replace('on', '');
+        domElement.addEventListener(eventName, propValue);
+      } else {
+        domElement.setAttribute(propName, propValue);
+      }
+    });
+  }
+  return domElement;
 }
-
-function _createBackground({style, ...props}) {
-  _background = document.createElement('div', {
-    ...props,
-  });
-
-  _background.setAttribute(EvaBgAttrName, 'true');
-
-  setStyle(_background, {
-    width: _options.width,
-    height: _options.height,
-    position: 'absolute',
-    left: '0',
-    top: '0',
-    pointerEvents: 'none',
-    zIndex: '0',
-    ...style,
-  });
+function _createBackground(props) {
+  _background = setReactAttribute(
+    'div',
+    props,
+    {
+      width: _options.width,
+      height: _options.height,
+      position: 'absolute',
+      left: '0',
+      top: '0',
+      pointerEvents: 'none',
+      zIndex: '0',
+    },
+    EvaBgAttrName,
+  );
   setEvaElement(_background);
 
   return _background;
+}
+function _createHUD(props) {
+  _hud = setReactAttribute(
+    'div',
+    props,
+    {
+      width: _options.width,
+      height: _options.height,
+      position: 'absolute',
+      left: '0',
+      top: '0',
+      pointerEvents: 'none',
+      zIndex: '2',
+    },
+    EvaHudAttrName,
+  );
+
+  setEvaElement(_hud);
+
+  return _hud;
 }
 const HostConfig = {
   getRootHostContext(rootContainerInstance) {
@@ -782,16 +886,17 @@ const HostConfig = {
             children &&
             (typeof children === 'string' || typeof children === 'number')
           ) {
-            let textComponent = gameObject.getComponent(Text) as any;
-            if (!textComponent) {
-              const style = getTextStyleProps({...restProps});
-              textComponent = gameObject.addComponent(
-                new Text({
-                  text: props.children,
-                  style,
-                }),
-              );
-            }
+            createText(props.children, gameObject, {...restProps});
+            // let textComponent = gameObject.getComponent(Text) as any;
+            // if (!textComponent) {
+            //   const style = getTextStyleProps({...restProps});
+            //   textComponent = gameObject.addComponent(
+            //     new Text({
+            //       text: props.children,
+            //       style,
+            //     }),
+            //   );
+            // }
           }
         }
       }
@@ -800,26 +905,7 @@ const HostConfig = {
       return gameObject;
     } else {
       //normal react element
-      const domElement = document.createElement(type, props);
-      Object.keys(props).forEach(propName => {
-        const propValue = props[propName];
-
-        if (propName === 'style') {
-          setStyle(domElement, propValue);
-        } else if (propName === 'children') {
-          if (typeof propValue === 'string' || typeof propValue === 'number') {
-            domElement.textContent = propValue;
-          }
-        } else if (propName === 'className') {
-          domElement.setAttribute('class', propValue);
-        } else if (isEventName(propName)) {
-          const eventName = propName.toLowerCase().replace('on', '');
-          domElement.addEventListener(eventName, propValue);
-        } else {
-          domElement.setAttribute(propName, propValue);
-        }
-      });
-      return domElement;
+      return setReactAttribute(type, props, props?.style);
     }
   },
 
@@ -847,7 +933,9 @@ const HostConfig = {
     rootContainerInstance,
     hostContext,
   ) {
-    if (instance instanceof Game) {
+    if (instance instanceof TextNode) {
+      return true;
+    } else if (instance instanceof Game) {
       return true;
     } else if (instance instanceof GameObject) {
       return true;
@@ -857,6 +945,7 @@ const HostConfig = {
   },
   commitUpdate(instance, updatePayload, type, oldProps, newProps) {
     // noop
+
     if (instance instanceof Game) {
     } else if (instance instanceof GameObject) {
       for (let prop in newProps) {
@@ -870,7 +959,12 @@ const HostConfig = {
         ) {
           continue;
         }
-        if (prop === 'children') continue;
+        if (prop === 'children') {
+          const textComponent = instance.getComponent(Text) as any;
+          if (textComponent) {
+            textComponent.text = value;
+          }
+        }
 
         if (value != null) {
           if (prop === 'style') {
@@ -881,14 +975,6 @@ const HostConfig = {
             setAttribute(instance, prop, value);
           }
         }
-      }
-      if (instance instanceof TextNode) {
-        const {textComponent, index} = instance;
-        const textId = (textComponent as any)._textId;
-        _textMap[textId][index] = newProps.children;
-        _updateTextComponent(textComponent);
-      } else {
-        // updateText(node, newProps.children );
       }
     } else {
       updatePayload.forEach(propName => {
@@ -997,7 +1083,9 @@ const HostConfig = {
 
   removeChild: removeChild,
 
-  removeChildFromContainer: removeChild,
+  removeChildFromContainer: (parent, child) => {
+    removeChild(parent, child);
+  },
 
   insertBefore,
 
@@ -1037,7 +1125,14 @@ const HostConfig = {
 };
 function createRenderer() {
   const reconciler = ReactReconciler(HostConfig);
-  return {reconciler, createInstance: _createGame};
+  return {
+    reconciler,
+    createInstance: _createGame,
+    destroyInstance: callback => {
+      console.log(_game, _root, callback);
+      callback();
+    },
+  };
 }
 
 export default createRenderer;
