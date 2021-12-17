@@ -162,6 +162,7 @@ const EvaContainer = forwardRef<EvaInstance, Record<string, any>>(
   (args, ref) => {
     const {systems = [], listeningProps = [], children, ...props} = args;
     const _container = useRef(null);
+
     const {render, unmountComponentAtNode} = ReconcilerEva;
     const systemsMemo = useMemo(() => [...instance.systems, ...systems], []);
 
@@ -171,7 +172,6 @@ const EvaContainer = forwardRef<EvaInstance, Record<string, any>>(
     );
     useLayoutEffect(() => {
       const root = _container.current;
-
       render(
         <Eva
           ref={ref}
@@ -193,7 +193,7 @@ const EvaContainer = forwardRef<EvaInstance, Record<string, any>>(
     useLayoutEffect(() => {
       const root = _container.current;
       return () => {
-        unmountComponentAtNode(root);
+        unmountComponentAtNode(root, () => {});
       };
     }, []);
     return <div ref={_container}></div>;

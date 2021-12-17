@@ -19,6 +19,7 @@
     "postpublic": "node ./script/aplus.js"
   },
   "dependencies": {
+    "@eva/fiber-eva": "^0.1.1",
     "@eva/react-eva": "^0.1.1",
     "@eva/react-eva-a11y": "^0.1.1",
     "@eva/react-eva-dragonbone": "^0.1.1",

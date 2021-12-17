@@ -439,7 +439,9 @@ function removeChild(parent, node) {
   } else if (isHudNode(node)) {
     parent.removeChild(node);
   } else if (isEvaNode(node)) {
+    _driver?.destroy()
     parent.removeChild(node);
+   
     _destroyGame();
   } else {
     parent.removeChild(node);
@@ -603,6 +605,8 @@ function _createGame(
     height: 100,
   },
 ) {
+  _root = null;
+  _canvas = null;
   _options = {...options};
 
   const {
@@ -673,21 +677,21 @@ function _createGame(
         100 +
       '';
   }
-
+  _driver = new RendererSystem({
+    canvas: _canvas,
+    width: Number(canvasWidth),
+    height: Number(canvasHeight),
+    transparent,
+    preventScroll,
+    renderType,
+    backgroundColor,
+    resolution: _options.resolution / 2,
+  });
   _game = new Game({
     frameRate,
     autoStart: true,
     systems: [
-      new RendererSystem({
-        canvas: _canvas,
-        width: Number(canvasWidth),
-        height: Number(canvasHeight),
-        transparent,
-        preventScroll,
-        renderType,
-        backgroundColor,
-        resolution: _options.resolution / 2,
-      }),
+      _driver,
       new RenderSystem(),
       new TextSystem(),
       new EventSystem(),
@@ -785,7 +789,6 @@ function _createBackground(props) {
   return _background;
 }
 function _createHUD(props) {
-  _background.setAttribute(EvaBgAttrName, 'true');
   _hud = setReactAttribute(
     'div',
     props,
@@ -1080,7 +1083,9 @@ const HostConfig = {
 
   removeChild: removeChild,
 
-  removeChildFromContainer: removeChild,
+  removeChildFromContainer: (parent, child) => {
+    removeChild(parent, child);
+  },
 
   insertBefore,
 
@@ -1120,7 +1125,14 @@ const HostConfig = {
 };
 function createRenderer() {
   const reconciler = ReactReconciler(HostConfig);
-  return {reconciler, createInstance: _createGame};
+  return {
+    reconciler,
+    createInstance: _createGame,
+    destroyInstance: callback => {
+      console.log(_game, _root, callback);
+      callback();
+    },
+  };
 }
 
 export default createRenderer;
