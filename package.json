@@ -12,7 +12,7 @@
   },
   "scripts": {
     "bootstrap": "lerna bootstrap --hoist",
-    "clean": "lerna clean && rm -rf node_modules packages/**/es packages/**/dist packages/**/lib",
+    "clean": "lerna clean && rm -rf node_modules packages/**/es packages/**/dist packages/**/lib packages/**/build",
     "start": "node scripts/start.js",
     "update": "node scripts/update.js",
     "build": "node scripts/build.js",
