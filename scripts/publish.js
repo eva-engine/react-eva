@@ -10,11 +10,10 @@ const parseArgs = require('minimist');
 
 const lernaConfig = require(resolve(__dirname, '..', 'lerna.json'));
 
-const {registry, npmClient} = lernaConfig.publish;
+const {registry, npmClient} = lernaConfig;
 
 const args = parseArgs(process.argv);
 const customPackage = args.packages ? args.packages.split(',') : [];
-
 function checkVersion(folder, callback) {
   const ret = []; // { name: 'foo', workDir, latest: 'x.x.x', local: 'x.x.x', shouldBuild }
   if (existsSync(folder)) {
@@ -97,7 +96,7 @@ function publish(pkg, workDir, version, shouldBuild, tag) {
   }
 
   // npm publish
-  spawnSync(npmClient, ['publish', '--tag=' + tag, '--regsitry=' + registry], {
+  spawnSync(npmClient, ['publish', '--tag=' + tag, '--regsitry=' + registry, '--access', 'public'], {
     stdio: 'inherit',
     cwd: workDir,
   });
