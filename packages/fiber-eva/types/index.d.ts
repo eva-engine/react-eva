@@ -3,7 +3,7 @@ import {FiberRoot} from 'react-reconciler';
 
 export const Reconciler: {
   render: (element: React.ReactElement, root: FiberRoot, props: any) => void;
-  unmountComponentAtNode: (root: FiberRoot) => void;
+  unmountComponentAtNode: (root: FiberRoot, callback: any) => void;
 };
 export default Reconciler;
 // export default class Driver {

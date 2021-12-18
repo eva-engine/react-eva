@@ -22,6 +22,7 @@ function initInstance(ref) {
   instance.hudElement = instance.rootElement.querySelector('div[eva-hud=true]');
   instance.gameInstance = instance.rootElement.gameInstance;
   instance.listeningProps = instance.rootElement.listeningProps;
+  console.log('instance', instance);
 }
 
 function initPreload(
@@ -161,7 +162,8 @@ const EvaContainer = forwardRef<EvaInstance, Record<string, any>>(
   (args, ref) => {
     const {systems = [], listeningProps = [], children, ...props} = args;
     const _container = useRef(null);
-    useImperativeHandle(ref, () => instance, []);
+
+    const {render, unmountComponentAtNode} = ReconcilerEva;
     const systemsMemo = useMemo(() => [...instance.systems, ...systems], []);
 
     const listeningPropsMemo = useMemo(
@@ -170,9 +172,9 @@ const EvaContainer = forwardRef<EvaInstance, Record<string, any>>(
     );
     useLayoutEffect(() => {
       const root = _container.current;
-      const {render} = ReconcilerEva;
       render(
         <Eva
+          ref={ref}
           {...props}
           systems={systemsMemo}
           listeningProps={listeningPropsMemo}
@@ -190,17 +192,11 @@ const EvaContainer = forwardRef<EvaInstance, Record<string, any>>(
 
     useLayoutEffect(() => {
       const root = _container.current;
-      const {unmountComponentAtNode} = ReconcilerEva;
       return () => {
-        unmountComponentAtNode(root);
+        unmountComponentAtNode(root, () => {});
       };
     }, []);
-    return (
-      <div
-        ref={_container}
-        style={{width: args.width, height: args.height, ...args.style}}
-      ></div>
-    );
+    return <div ref={_container}></div>;
   },
 );
 export default memo(EvaContainer);
