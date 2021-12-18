@@ -1,4 +1,4 @@
-import {createElement, useState, useCallback, Fragment} from 'react';
+import React, {createElement, useState, useCallback, Fragment} from 'react';
 import './index.css';
 import {Eva} from '@eva/react-eva';
 import usePreloadResources from './components/Preload';
