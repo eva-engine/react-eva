@@ -1,7 +1,7 @@
 {
   "name": "@eva/react-eva-sprite",
   "author": "Chrise",
-  "version": "0.0.1-alpha.2",
+  "version": "0.0.1-alpha.3",
   "description": "React EVA是一个让开发同学能够在React技术体系下，利用EVA JS的游戏研发能力，开发动画、游戏类场景的框架。它可以让开发同学用熟悉的JSX和Hooks语法编写动画、游戏场景的代码。",
   "main": "lib/index.js",
   "esmodule": "es/index.js",
@@ -28,7 +28,7 @@
     "build": "build-scripts build --skip-demo && rm -f lib/*.d.ts"
   },
   "dependencies": {
-    "@eva/react-eva": "^0.0.1-alpha.2",
+    "@eva/react-eva": "^0.0.1-alpha.3",
     "@eva/plugin-renderer-sprite": "^1.2.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
@@ -37,7 +37,7 @@
   "peerDependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "@eva/react-eva": "^0.0.1-alpha.2",
+    "@eva/react-eva": "^0.0.1-alpha.3",
     "@eva/plugin-renderer-sprite": "^1.2.4"
   },
   "homepage": "https://unpkg.com/@eva/react-eva-sprite@0.1.1/build/index.html"
