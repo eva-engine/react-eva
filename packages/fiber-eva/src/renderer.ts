@@ -1,4 +1,4 @@
-import ReactReconciler from 'react-reconciler';
+import ReactReconciler, {FiberRoot} from 'react-reconciler';
 import {convertUnit, cached} from 'style-unit';
 import {GameObject, Game, Component, System} from '@eva/eva.js';
 import {RendererSystem} from '@eva/plugin-renderer';
@@ -439,10 +439,8 @@ function removeChild(parent, node) {
   } else if (isHudNode(node)) {
     parent.removeChild(node);
   } else if (isEvaNode(node)) {
-    _driver?.destroy()
     parent.removeChild(node);
-   
-    _destroyGame();
+    // _destroyGame();
   } else {
     parent.removeChild(node);
   }
@@ -634,7 +632,7 @@ function _createGame(
 
   _root = setReactAttribute(
     'div',
-    {...props},
+    null,
     {
       width,
       height,
@@ -1083,9 +1081,7 @@ const HostConfig = {
 
   removeChild: removeChild,
 
-  removeChildFromContainer: (parent, child) => {
-    removeChild(parent, child);
-  },
+  removeChildFromContainer: removeChild,
 
   insertBefore,
 
@@ -1128,9 +1124,21 @@ function createRenderer() {
   return {
     reconciler,
     createInstance: _createGame,
-    destroyInstance: callback => {
-      console.log(_game, _root, callback);
-      callback();
+    unmountComponentAtNode(container: FiberRoot, callback) {
+      _game?.pause();
+      // // _game.gameObjects.forEach(node => {
+      // //   if (isGameObject(node)) {
+      // //     // gameobject
+      // //     // parent.removeChild(node);
+      // //     node.destroy();
+      // //   }
+      // // });
+      _driver?.destroy();     
+      // _destroyGame();
+      reconciler.updateContainer(null, container._rootContainer, null, () => {
+        console.log('unmount');
+        callback();
+      });
     },
   };
 }
