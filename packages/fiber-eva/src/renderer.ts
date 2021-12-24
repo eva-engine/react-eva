@@ -27,43 +27,6 @@ let _driver,
   },
   _firstRender = true;
 
-function debugLog(debug, level, ...message) {
-  if (debug) {
-    console[level](...message);
-  }
-}
-
-function useEvaDriver(filter, level = 'debug') {
-  return (target, methodName, descriptor) => {
-    const oldValue = descriptor.value;
-
-    descriptor.value = function (...args) {
-      let returnValue;
-      let driverName;
-      if (filter(...args)) {
-        driverName = 'Eva Driver';
-        returnValue = oldValue.apply(this, args);
-      } else {
-        driverName = 'React Driver';
-        returnValue = _driver[methodName](...args);
-      }
-
-      debugLog(
-        _debug,
-        level,
-        `[${driverName}]`,
-        methodName,
-        '(',
-        args,
-        ')',
-        '=>',
-        returnValue,
-      );
-
-      return returnValue;
-    };
-  };
-}
 
 const EvaPropName = '__$eva$__';
 const EvaRootAttrName = 'eva-root';
@@ -187,14 +150,6 @@ function processListeningProps(gameObject: GameObject, restProps) {
       }
     }
   }
-}
-
-function yeep() {
-  return true;
-}
-
-function noop() {
-  return false;
 }
 
 function isGameObject(node) {
