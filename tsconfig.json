@@ -36,6 +36,7 @@
       "@eva/eva-plugin-renderer-sprite": ["node_modules/@eva/eva-plugin-renderer-sprite/types"],
       "@eva/eva-plugin-renderer-sprite-animation": ["node_modules/@eva/eva-plugin-renderer-sprite-animation/types"],
       "@eva/eva-plugin-renderer-tiling-sprite": ["node_modules/@eva/eva-plugin-renderer-tiling-sprite/types"],
+      "@eva/eva-plugin-stats": ["node_modules/@eva/eva-plugin-stats/types"],
       "@eva/eva-plugin-transition": ["node_modules/@eva/eva-plugin-transition/types"],
       "@eva/fiber-eva": ["packages/fiber-eva/types"],
       "@eva/react-eva": ["packages/react-eva/types"],
@@ -47,6 +48,7 @@
       "@eva/react-eva-spine": ["packages/react-eva-spine/types"],
       "@eva/react-eva-sprite": ["packages/react-eva-sprite/types"],
       "@eva/react-eva-sprte-animation": ["packages/react-eva-sprte-animation/types"],
+      "@eva/react-eva-stats": ["packages/react-eva-stats/types"],
       "@eva/react-eva-tiling-sprite": ["packages/react-eva-tiling-sprite/types"],
       "@eva/react-eva-transition": ["packages/react-eva-transition/types"]
     }
