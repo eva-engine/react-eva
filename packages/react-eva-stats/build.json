@@ -1,0 +1,7 @@
+{
+  "library": "dist",
+  "filename": "index",
+  "libraryTarget": "umd",
+  "plugins": [["build-plugin-component"]]
+}
+
