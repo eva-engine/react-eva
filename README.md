@@ -34,6 +34,7 @@ npm run playground-dev
 ### 发布
 修改项目目录 package.json 版本号
 ```js
+npm run build -- "--packages=*"
 npm run update
 npm run publish -- "--tag alpha" "--packages=*"
 ```
