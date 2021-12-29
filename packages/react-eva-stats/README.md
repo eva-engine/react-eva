@@ -3,9 +3,9 @@
 ## Install
 
 ```
-$ npm install @eva/react-eva-a11y --save
+$ npm install @eva/react-eva-stats --save
 ```
 
 ## Usage
 
-[Guide](https://yuque.com/eva/react-eva/a11y)
+[Guide](https://yuque.com/eva/react-eva/stats)
