@@ -28,19 +28,20 @@
     "build": "build-scripts build --skip-demo && rm -f lib/*.d.ts"
   },
   "dependencies": {
-    "@eva/react-eva": "^0.1.1",
-    "@eva/plugin-stats": "^1.2.1",
+    "@eva/react-eva": "^0.0.1-alpha.2",
+    "@eva/plugin-stats": "^1.2.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@eva/react-eva-image": "^0.1.1"
+    "@eva/react-eva-image": "^0.0.1-alpha.2",
+    "@eva/react-eva-lottie": "^0.0.1-alpha.2"
   },
   "peerDependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "@eva/react-eva": "^0.1.1",
-    "@eva/plugin-stats": "^1.2.1"
+    "@eva/react-eva": "^0.0.1-alpha.2",
+    "@eva/plugin-stats": "^1.2.4"
   },
   "homepage": "https://unpkg.com/@eva/react-eva-stats@0.1.1/build/index.html"
 }
