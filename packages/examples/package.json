@@ -13,17 +13,17 @@
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "@eva/react-eva": "^0.0.1-alpha.2",
-    "@eva/react-eva-sprite": "^0.0.1-alpha.2",
-    "@eva/react-eva-sprite-animation": "^0.0.1-alpha.2",
-    "@eva/react-eva-image": "^0.0.1-alpha.2",
-    "@eva/react-eva-graphics": "^0.0.1-alpha.2",
-    "@eva/react-eva-dragonbone": "^0.0.1-alpha.2",
-    "@eva/react-eva-transition": "^0.0.1-alpha.2",
-    "@eva/react-eva-a11y": "^0.0.1-alpha.2",
-    "@eva/react-eva-spine": "^0.0.1-alpha.2",
-    "@eva/react-eva-mask": "^0.0.1-alpha.2"
+    "@eva/react-eva": "^0.0.1-alpha.5",
+    "@eva/react-eva-sprite": "^0.0.1-alpha.5",
+    "@eva/react-eva-sprite-animation": "^0.0.1-alpha.5",
+    "@eva/react-eva-image": "^0.0.1-alpha.5",
+    "@eva/react-eva-graphics": "^0.0.1-alpha.5",
+    "@eva/react-eva-dragonbone": "^0.0.1-alpha.5",
+    "@eva/react-eva-transition": "^0.0.1-alpha.5",
+    "@eva/react-eva-a11y": "^0.0.1-alpha.5",
+    "@eva/react-eva-spine": "^0.0.1-alpha.5",
+    "@eva/react-eva-mask": "^0.0.1-alpha.5"
   },
   "devDependencies": {},
-  "version": "0.0.1-alpha.2"
+  "version": "0.0.1-alpha.5"
 }
