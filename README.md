@@ -1,6 +1,6 @@
 # ReactEva
 
-> 用于开发互动的React解决方案
+> 用于开发互动游戏的React解决方案
 
 ReactEva是一个让开发同学能够在React技术体系下，利用Eva.js的游戏研发能力，开发动画、游戏类场景的框架。它可以让开发同学用熟悉的JSX和（仅支持）Hooks语法编写动画、游戏场景的代码。
 
@@ -8,7 +8,10 @@ ReactEva借助React的fiber机制，把React VDOM的操作映射到Eva.js的上�
 
 ReactEva还提供了，游戏结点和DOM结点混合开发的能力（需由fiber-eva/react-dom配合），目前暂提供Web环境的解决方案。
 
-## 开发
+## React Eva 项目开发
+[教学文档](https://www.yuque.com/eva/react-eva)
+
+## React Eva 源码贡献
 ```bash
 npm i
 npm run init
