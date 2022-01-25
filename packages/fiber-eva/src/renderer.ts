@@ -1,7 +1,14 @@
 import ReactReconciler, {FiberRoot} from 'react-reconciler';
 import {convertUnit, cached} from 'style-unit';
-import {GameObject, Game, Component, System} from '@eva/eva.js';
-import {RendererSystem} from '@eva/plugin-renderer';
+import {
+  GameObject,
+  Game,
+  Component,
+  System,
+  Scene,
+  LOAD_SCENE_MODE,
+} from '@eva/eva.js';
+import {RendererSystem, RendererSystemParams} from '@eva/plugin-renderer';
 import {Render, RenderSystem} from '@eva/plugin-renderer-render';
 import {Text, TextSystem} from '@eva/plugin-renderer-text';
 import {Event, EventSystem} from '@eva/plugin-renderer-event';
@@ -17,7 +24,9 @@ let _driver,
   _hud: HTMLDivElement,
   _background: HTMLDivElement,
   _game: Game,
+  _scene: Scene,
   _textMap = {},
+  _rendererParams: RendererSystemParams,
   _counter = {
     eva: 0,
     scene: 0,
@@ -26,7 +35,6 @@ let _driver,
     textMap: 0,
   },
   _firstRender = true;
-
 
 const EvaPropName = '__$eva$__';
 const EvaRootAttrName = 'eva-root';
@@ -371,13 +379,16 @@ function addEventListener(node, eventName, eventHandler) {
 }
 
 const NO_CONTEXT = {};
-
 function appendChild(parent, node) {
   // if (node instanceof TextNode) return;
   if (isGameObjectTree(node, parent)) {
     parent.addChild(node);
   } else if (isSceneNode(node, parent)) {
-    _game.scene.addChild(node);
+    if (_scene) {
+      _scene.addChild(node);
+    } else {
+      _game.scene.addChild(node);
+    }
   } else {
     parent.appendChild(node);
   }
@@ -630,7 +641,7 @@ function _createGame(
         100 +
       '';
   }
-  _driver = new RendererSystem({
+  _rendererParams = {
     canvas: _canvas,
     width: Number(canvasWidth),
     height: Number(canvasHeight),
@@ -639,34 +650,45 @@ function _createGame(
     renderType,
     backgroundColor,
     resolution: _options.resolution / 2,
-  });
-  _game = new Game({
-    frameRate,
-    autoStart: true,
-    systems: [
-      _driver,
-      new RenderSystem(),
-      new TextSystem(),
-      new EventSystem(),
-      ...systems
-        .map(system => {
-          if (system instanceof System) {
-            return system;
-          } else if (typeof system === 'function') {
-            return system(props);
-          }
-        })
-        .filter(system => {
-          const systemName = system.constructor.systemName;
-          if (!systemName || systemCached[systemName] !== true) {
-            systemName && (systemCached[systemName] = true);
-            return true;
-          }
-          return false;
-        }),
-    ],
-  });
-
+  };
+  if (_firstRender) {
+    _driver = new RendererSystem(_rendererParams);
+    _game = new Game({
+      frameRate,
+      autoStart: true,
+      systems: [
+        _driver,
+        new RenderSystem(),
+        new TextSystem(),
+        new EventSystem(),
+        ...systems
+          .map(system => {
+            if (system instanceof System) {
+              return system;
+            } else if (typeof system === 'function') {
+              return system(props);
+            }
+          })
+          .filter(system => {
+            const systemName = system.constructor.systemName;
+            if (!systemName || systemCached[systemName] !== true) {
+              systemName && (systemCached[systemName] = true);
+              return true;
+            }
+            return false;
+          }),
+      ],
+    });
+  }
+  if (!_firstRender) {
+    _scene = new Scene('');
+    _game.loadScene({
+      scene: _scene,
+      mode: LOAD_SCENE_MODE.MULTI_CANVAS,
+      params: _rendererParams,
+    });
+  }
+  _firstRender = false;
   _game.scene.transform.size.width = Number(canvasWidth);
   _game.scene.transform.size.height = Number(canvasHeight);
 
@@ -1088,7 +1110,7 @@ function createRenderer() {
       // //     node.destroy();
       // //   }
       // // });
-      _driver?.destroy();     
+      _driver?.destroy();
       // _destroyGame();
       reconciler.updateContainer(null, container._rootContainer, null, () => {
         console.log('unmount');
